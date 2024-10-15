@@ -1,0 +1,11 @@
+{
+    "project_id": 15000,
+    "person_id": 149,
+    "date_expense": "2023-04-02T00:00:00",
+    "expense_type": 39,
+    "expense": 100.01,
+    "remarks": "admin api test expense - updated",
+    "invoicable": true,
+    "period": 132,
+    "internal_remarks": "Add internal remark"
+}

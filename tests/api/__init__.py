@@ -1,0 +1,1 @@
+from .adminconsult_test_credentials import client_credentials

@@ -1,0 +1,19 @@
+{
+    "acc_code": "86700319",
+    "commercial_name": "ABC France",
+    "cupboard_number": "WT987",
+    "customer_crm_type": 8,
+    "customer_group": null,
+    "email": "info@abc.fr",
+    "home_page": "www.site.fr",
+    "language": "DE",
+    "mobile": "+33 (475) 123456",
+    "nace_code": null,
+    "name": "The ABC company FRANCE",
+    "phone": "+33 (56) 986532",
+    "remarks": "admin api test customer - Updated",
+    "rpr": "482987523",
+    "social_security_number": null,
+    "title_id": 27,
+    "vat_nr": "FR0123456123"
+}
