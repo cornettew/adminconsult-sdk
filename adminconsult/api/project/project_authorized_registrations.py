@@ -4,30 +4,29 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ProjectAuthorizedRegistration(Entity):
+        
+    prestation_id: int = None
+    project_id = None
+
+    _property_mapping = dict({
+        "prestation_id": {
+            "GET": "PrestationId",
+            "POST": None,
+            "PUT": None
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": None,
+            "PUT": None
+        }
+    })
 
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-        
-        self.prestation_id = None
-        self.project_id = None
-
-        property_mapping = dict({
-            "prestation_id": {
-                "GET": "PrestationId",
-                "POST": None,
-                "PUT": None
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": None,
-                "PUT": None
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='projectauthorizedregistrations', 
                          #IMPROV# API should return the id of the authorized prestation
                          primary_property='??', 
-                         property_mapping=property_mapping, 
                          payload=payload)
 
 

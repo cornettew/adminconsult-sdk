@@ -10,156 +10,156 @@ from .project_templates import ProjectTemplate
 from datetime import datetime
 
 class Project(Entity):
+        
+    company = None
+    company_id: int = None
+    customer_id: int = None
+    date_accepted = None
+    date_proposal = None
+    deadline = None
+    department = None
+    _department_id: int = None
+    invoice_percentage = None,
+    is_accepted = None
+    is_active = None
+    is_taskflow_customer = None
+    po_number = None
+    project_description = None
+    project_id: int = None
+    project_manager = None
+    project_manager_id: int = None
+    project_number = None
+    project_status = None
+    project_status_id: int = None
+    project_title = None
+    project_type = None
+    project_type_id = None
+
+    _property_mapping = dict({
+        "company": {
+            "GET": "Company",
+            "POST": None,
+            "PUT": None
+        },
+        "company_id": {
+            "GET": "CompanyId",
+            "POST": None,
+            "PUT": "Company"
+        },
+        "customer_id": {
+            "GET": "CustomerId",
+            "POST": None,
+            "PUT": None
+        },
+        "date_accepted": {
+            "GET": "DateAccepted",
+            "POST": None,
+            "PUT": "DateAccepted"
+        },
+        "date_proposal": {
+            "GET": "DateProposal",
+            "POST": None,
+            "PUT": "DateProposal"
+        },
+        "deadline": {
+            "GET": "Deadline",
+            "POST": None,
+            "PUT": "Deadline"
+        },
+        "department": {
+            "GET": "Department",
+            "POST": None,
+            "PUT": None
+        },
+        "department_id": {
+            "GET": "DepartmentId",
+            "POST": None,
+            "PUT": "Department"
+        },
+        "invoice_percentage": {
+            "GET": "InvoicePercentage",
+            "POST": None,
+            "PUT": None
+        },
+        "is_accepted": {
+            "GET": "IsAccepted",
+            "POST": None,
+            "PUT": "IsAccepted"
+        },
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "is_taskflow_customer": {
+            "GET": "IsTaskflowCustomer",
+            "POST": None,
+            "PUT": None
+        },
+        "po_number": {
+            "GET": "POnumber",
+            "POST": None,
+            "PUT": "POnumber"
+        },
+        "project_description": {
+            "GET": "ProjectDescription",
+            "POST": None,
+            "PUT": "ProjectDescription"
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": None,
+            "PUT": None
+        },
+        "project_manager": {
+            "GET": "ProjectManager",
+            "POST": None,
+            "PUT": None
+        },
+        "project_manager_id": {
+            "GET": "ProjectManagerId",
+            "POST": None,
+            "PUT": "ProjectManager"
+        },
+        "project_number": {
+            "GET": "ProjectNumber",
+            "POST": None,
+            "PUT": "ProjectNumber"
+        },
+        "project_status": {
+            "GET": "ProjectStatus",
+            "POST": None,
+            "PUT": None
+        },
+        "project_status_id": {
+            "GET": "ProjectStatusId",
+            "POST": None,
+            "PUT": "ProjectStatus"
+        },
+        "project_title": {
+            "GET": "ProjectTitle",
+            "POST": None,
+            "PUT": "ProjectTitle"
+        },
+        "project_type": {
+            "GET": "ProjectType",
+            "POST": None,
+            "PUT": None
+        },
+        "project_type_id": {
+            "GET": "ProjectTypeId",
+            "POST": None,
+            "PUT": "ProjectType"
+        }
+    })
 
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-        
-        self.company = None
-        self.company_id = None
-        self.customer_id = None
-        self.date_accepted = None
-        self.date_proposal = None
-        self.deadline = None
-        self.department = None
-        self._department_id = None
-        self.invoice_percentage = None,
-        self.is_accepted = None
-        self.is_active = None
-        self.is_taskflow_customer = None
-        self.po_number = None
-        self.project_description = None
-        self.project_id = None
-        self.project_manager = None
-        self.project_manager_id = None
-        self.project_number = None
-        self.project_status = None
-        self.project_status_id = None
-        self.project_title = None
-        self.project_type = None
-        self.project_type_id = None
-
-        property_mapping = dict({
-            "company": {
-                "GET": "Company",
-                "POST": None,
-                "PUT": None
-            },
-            "company_id": {
-                "GET": "CompanyId",
-                "POST": None,
-                "PUT": "Company"
-            },
-            "customer_id": {
-                "GET": "CustomerId",
-                "POST": None,
-                "PUT": None
-            },
-            "date_accepted": {
-                "GET": "DateAccepted",
-                "POST": None,
-                "PUT": "DateAccepted"
-            },
-            "date_proposal": {
-                "GET": "DateProposal",
-                "POST": None,
-                "PUT": "DateProposal"
-            },
-            "deadline": {
-                "GET": "Deadline",
-                "POST": None,
-                "PUT": "Deadline"
-            },
-            "department": {
-                "GET": "Department",
-                "POST": None,
-                "PUT": None
-            },
-            "department_id": {
-                "GET": "DepartmentId",
-                "POST": None,
-                "PUT": "Department"
-            },
-            "invoice_percentage": {
-                "GET": "InvoicePercentage",
-                "POST": None,
-                "PUT": None
-            },
-            "is_accepted": {
-                "GET": "IsAccepted",
-                "POST": None,
-                "PUT": "IsAccepted"
-            },
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "is_taskflow_customer": {
-                "GET": "IsTaskflowCustomer",
-                "POST": None,
-                "PUT": None
-            },
-            "po_number": {
-                "GET": "POnumber",
-                "POST": None,
-                "PUT": "POnumber"
-            },
-            "project_description": {
-                "GET": "ProjectDescription",
-                "POST": None,
-                "PUT": "ProjectDescription"
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": None,
-                "PUT": None
-            },
-            "project_manager": {
-                "GET": "ProjectManager",
-                "POST": None,
-                "PUT": None
-            },
-            "project_manager_id": {
-                "GET": "ProjectManagerId",
-                "POST": None,
-                "PUT": "ProjectManager"
-            },
-            "project_number": {
-                "GET": "ProjectNumber",
-                "POST": None,
-                "PUT": "ProjectNumber"
-            },
-            "project_status": {
-                "GET": "ProjectStatus",
-                "POST": None,
-                "PUT": None
-            },
-            "project_status_id": {
-                "GET": "ProjectStatusId",
-                "POST": None,
-                "PUT": "ProjectStatus"
-            },
-            "project_title": {
-                "GET": "ProjectTitle",
-                "POST": None,
-                "PUT": "ProjectTitle"
-            },
-            "project_type": {
-                "GET": "ProjectType",
-                "POST": None,
-                "PUT": None
-            },
-            "project_type_id": {
-                "GET": "ProjectTypeId",
-                "POST": None,
-                "PUT": "ProjectType"
-            }
-        })
         
         super().__init__(
             client_credentials=client_credentials, 
             endpoint='projects', 
             primary_property='project_id', 
-            property_mapping=property_mapping, payload=payload)
+            payload=payload)
         
     @property
     def department_id(self):
@@ -208,9 +208,9 @@ class Project(Entity):
             project_customer_inv.customer_id = bill_to_customer_id
             project_customer_inv.co_contractor = False
             project_customer_inv.direct_debit = False
-            project_customer_inv.invoice_annex_id = None
+            project_customer_inv.invoice_annex_id: int = None
             project_customer_inv.need_invoice_annex = False
-            project_customer_inv.vat_excl_text_id = None
+            project_customer_inv.vat_excl_text_id: int = None
             project_customer_inv.vat_incl = True
             project_customer_inv.create()
 

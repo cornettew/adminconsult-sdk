@@ -4,75 +4,80 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TaskFlowSubtask(Entity):
+
+    task_id: int = None
+    subtask_id: int = None
+    subtask_name = None
+    subtask_order = None
+    subtask_percentage = None
+    subtask_active = None
+    subtask_responsable = None
+    is_real_subtask = None
+    subtask_percentage = None
+    deadline_variance_unit = None
+    deadline_variance_nr = None
+
+    _property_mapping = dict({
+        'task_id': {
+            'GET': 'TaskId',
+            'POST': None,
+            'PUT': None
+        },
+        'subtask_id': {
+            'GET': 'SubtaskId',
+            'POST': None,
+            'PUT': None
+        },
+        'subtask_name': {
+            'GET': 'SubtaskName',
+            'POST': None,
+            'PUT': None
+        },
+        'subtask_order': {
+            'GET': 'SubtaskOrder',
+            'POST': None,
+            'PUT': None
+        },
+        'subtask_percentage': {
+            'GET': 'SubTaskPercentage',
+            'POST': None,
+            'PUT': None
+        },
+        'subtask_active': {
+            'GET': 'SubtaskActive',
+            'POST': None,
+            'PUT': None
+        },
+        'subtask_responsable': {
+            'GET': 'SubTaskResponsable',
+            'POST': None,
+            'PUT': None
+        },
+        'is_real_subtask': {
+            'GET': 'IsRealSubtask',
+            'POST': None,
+            'PUT': None
+        },
+        'deadline_variance_unit': {
+            'GET': 'DeadlineVarianceUnit',
+            'POST': None,
+            'PUT': None
+        },
+        'deadline_variance_nr': {
+            'GET': 'DeadlineVarianceNr',
+            'POST': None,
+            'PUT': None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, task_id: int, payload=None):
 
         self.task_id = task_id
-        self.subtask_id = None
-        self.subtask_name = None
-        self.subtask_order = None
-        self.subtask_percentage = None
-        self.subtask_active = None
-        self.subtask_responsable = None
-        self.is_real_subtask = None
-        self.subtask_percentage = None
-        self.deadline_variance_unit = None
-        self.deadline_variance_nr = None
 
-        property_mapping = dict({
-            'task_id': {
-                'GET': 'TaskId',
-                'POST': None,
-                'PUT': None
-            },
-            'subtask_id': {
-                'GET': 'SubtaskId',
-                'POST': None,
-                'PUT': None
-            },
-            'subtask_name': {
-                'GET': 'SubtaskName',
-                'POST': None,
-                'PUT': None
-            },
-            'subtask_order': {
-                'GET': 'SubtaskOrder',
-                'POST': None,
-                'PUT': None
-            },
-            'subtask_percentage': {
-                'GET': 'SubTaskPercentage',
-                'POST': None,
-                'PUT': None
-            },
-            'subtask_active': {
-                'GET': 'SubtaskActive',
-                'POST': None,
-                'PUT': None
-            },
-            'subtask_responsable': {
-                'GET': 'SubTaskResponsable',
-                'POST': None,
-                'PUT': None
-            },
-            'is_real_subtask': {
-                'GET': 'IsRealSubtask',
-                'POST': None,
-                'PUT': None
-            },
-            'deadline_variance_unit': {
-                'GET': 'DeadlineVarianceUnit',
-                'POST': None,
-                'PUT': None
-            },
-            'deadline_variance_nr': {
-                'GET': 'DeadlineVarianceNr',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='taskflow/tasks/{}/subtasks'.format(task_id), primary_property='subtask_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='taskflow/tasks/{}/subtasks'.format(task_id), 
+                         primary_property='subtask_id', 
+                         payload=payload)
 
 
     # Overriding _get_entity() because of the requirement to pass datefrom and dateuntil

@@ -4,80 +4,83 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TimeregistrationItem(Entity):
+
+    account_nr = None
+    benchmark_required = None
+    fixed_price = None
+    invoicable = None
+    is_absence = None
+    is_active = None
+    prestation = None
+    prestation_code = None
+    prestation_id: int = None
+    subcategory_id: int = None
+    usage_description = None
+
+    _property_mapping = dict({
+        "account_nr": {
+            "GET": "AccountNr",
+            "POST": None,
+            "PUT": None
+        },
+        "benchmark_required": {
+            "GET": "BenchmarkRequired",
+            "POST": None,
+            "PUT": None
+        },
+        "fixed_price": {
+            "GET": "FixedPrice",
+            "POST": None,
+            "PUT": None
+        },
+        "invoicable": {
+            "GET": "Invoicable",
+            "POST": None,
+            "PUT": None
+        },
+        "is_absence": {
+            "GET": "IsAbsence",
+            "POST": None,
+            "PUT": None
+        },
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "prestation": {
+            "GET": "Prestation",
+            "POST": None,
+            "PUT": None
+        },
+        "prestation_code": {
+            "GET": "PrestationCode",
+            "POST": None,
+            "PUT": None
+        },
+        "prestation_id": {
+            "GET": "PrestationId",
+            "POST": None,
+            "PUT": None
+        },
+        "subcategory_id": {
+            "GET": "SubcategoryId",
+            "POST": None,
+            "PUT": None
+        },
+        "usage_description": {
+            "GET": "UsageDescription",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.account_nr = None
-        self.benchmark_required = None
-        self.fixed_price = None
-        self.invoicable = None
-        self.is_absence = None
-        self.is_active = None
-        self.prestation = None
-        self.prestation_code = None
-        self.prestation_id = None
-        self.subcategory_id = None
-        self.usage_description = None
-
-        property_mapping = dict({
-            "account_nr": {
-                "GET": "AccountNr",
-                "POST": None,
-                "PUT": None
-            },
-            "benchmark_required": {
-                "GET": "BenchmarkRequired",
-                "POST": None,
-                "PUT": None
-            },
-            "fixed_price": {
-                "GET": "FixedPrice",
-                "POST": None,
-                "PUT": None
-            },
-            "invoicable": {
-                "GET": "Invoicable",
-                "POST": None,
-                "PUT": None
-            },
-            "is_absence": {
-                "GET": "IsAbsence",
-                "POST": None,
-                "PUT": None
-            },
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "prestation": {
-                "GET": "Prestation",
-                "POST": None,
-                "PUT": None
-            },
-            "prestation_code": {
-                "GET": "PrestationCode",
-                "POST": None,
-                "PUT": None
-            },
-            "prestation_id": {
-                "GET": "PrestationId",
-                "POST": None,
-                "PUT": None
-            },
-            "subcategory_id": {
-                "GET": "SubcategoryId",
-                "POST": None,
-                "PUT": None
-            },
-            "usage_description": {
-                "GET": "UsageDescription",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='timeregistrations/registrationitem', primary_property='prestation_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='timeregistrations/registrationitem', 
+                         primary_property='prestation_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

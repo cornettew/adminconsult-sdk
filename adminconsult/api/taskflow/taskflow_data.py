@@ -36,6 +36,44 @@ class SubtaskData(Entity):
         }
     '''
 
+    _property_mapping = dict({
+        'task_id': {
+            'GET': None,
+            'POST': None,
+            'PUT': 'TaskId'
+        },
+        'subtask_id': {
+            'GET': None,
+            'POST': None,
+            'PUT': 'SubtaskId'
+        },
+        'subtask_label': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'taskdata_id': {
+            'GET': None,
+            'POST': None,
+            'PUT': 'RecordId'
+        },
+        'value': {
+            'GET': None,
+            'POST': None,
+            'PUT': 'Value'
+        },
+        'date': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'who': {
+            'GET': None,
+            'POST': None,
+            'PUT': 'UserName'
+        }
+    })
+
     def __init__(self, client_credentials, task_id, subtask_id, subtask_label, taskdata_id, subtask_data: dict) -> None:
 
         # Metadata
@@ -49,49 +87,10 @@ class SubtaskData(Entity):
         self.date = None
         self.who = None
         self._who_enabled = False
-
-        property_mapping = dict({
-            'task_id': {
-                'GET': None,
-                'POST': None,
-                'PUT': 'TaskId'
-            },
-            'subtask_id': {
-                'GET': None,
-                'POST': None,
-                'PUT': 'SubtaskId'
-            },
-            'subtask_label': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'taskdata_id': {
-                'GET': None,
-                'POST': None,
-                'PUT': 'RecordId'
-            },
-            'value': {
-                'GET': None,
-                'POST': None,
-                'PUT': 'Value'
-            },
-            'date': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'who': {
-                'GET': None,
-                'POST': None,
-                'PUT': 'UserName'
-            }
-        })
         
         super().__init__(client_credentials=client_credentials, 
                          endpoint='taskflow/tasks/{}'.format(self.task_id), 
                          primary_property='record_id-subtask_id', 
-                         property_mapping=property_mapping, 
                          payload=subtask_data
                          )
     
@@ -177,7 +176,7 @@ class TaskFlowData(Entity):
     * override '.update_subtask(subtask_id=int, value, user_name)' with more meaningful methodnames and valiation of value.
     '''
     
-    _task_id: int
+    _task_id: int = None
 
     taskdata_id: int = None
     deadline: datetime = None
@@ -188,43 +187,42 @@ class TaskFlowData(Entity):
     # Add autocompletion 'Subtask' definition ?
     _subtasks: list[SubtaskData] = []
 
+    _property_mapping = dict({
+        'taskdata_id': {
+            'GET': 'Id',
+            'POST': None,
+            'PUT': None
+        },
+        'deadline': {
+            'GET': 'Deadline',
+            'POST': None,
+            'PUT': None
+        },
+        'project_id': {
+            'GET': 'ProjectId',
+            'POST': None,
+            'PUT': None
+        },
+        'customer_id': {
+            'GET': 'CustomerId',
+            'POST': None,
+            'PUT': None
+        },
+        'company_id': {
+            'GET': 'company_id',
+            'POST': None,
+            'PUT': None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, task_id, payload=None):
 
         self._task_id = task_id
         self._subtasks = []
 
-        property_mapping = dict({
-            'taskdata_id': {
-                'GET': 'Id',
-                'POST': None,
-                'PUT': None
-            },
-            'deadline': {
-                'GET': 'Deadline',
-                'POST': None,
-                'PUT': None
-            },
-            'project_id': {
-                'GET': 'ProjectId',
-                'POST': None,
-                'PUT': None
-            },
-            'customer_id': {
-                'GET': 'CustomerId',
-                'POST': None,
-                'PUT': None
-            },
-            'company_id': {
-                'GET': 'company_id',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
         super().__init__(client_credentials=client_credentials, 
                          endpoint='taskflow/tasks/{}/data'.format(self._task_id), 
                          primary_property='taskdata_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          datetime_properties=['deadline'])
 

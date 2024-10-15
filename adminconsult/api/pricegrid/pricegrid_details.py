@@ -4,53 +4,52 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class PriceGridDetail(Entity):
+
+    price_grid_id: int = None
+    row_value_id: int = None
+    column_value_id: int = None
+    tariff = None
+    column_value_description = None
+    row_value_description = None
+
+    _property_mapping = dict({
+        "price_grid_id": {
+            "GET": "PriceGridId",
+            "POST": None,
+            "PUT": None
+        },
+        "row_value_id": {
+            "GET": "RowValueId",
+            "POST": None,
+            "PUT": None
+        },
+        "column_value_id": {
+            "GET": "ColumnValueId",
+            "POST": None,
+            "PUT": None
+        },
+        "tariff": {
+            "GET": "Tariff",
+            "POST": None,
+            "PUT": None
+        },
+        "column_value_description": {
+            "GET": "ColumnValueDescription",
+            "POST": None,
+            "PUT": None
+        },
+        "row_value_description": {
+            "GET": "RowValueDescription",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-
-        self.price_grid_id = None
-        self.row_value_id = None
-        self.column_value_id = None
-        self.tariff = None
-        self.column_value_description = None
-        self.row_value_description = None
-
-        property_mapping = dict({
-            "price_grid_id": {
-                "GET": "PriceGridId",
-                "POST": None,
-                "PUT": None
-            },
-            "row_value_id": {
-                "GET": "RowValueId",
-                "POST": None,
-                "PUT": None
-            },
-            "column_value_id": {
-                "GET": "ColumnValueId",
-                "POST": None,
-                "PUT": None
-            },
-            "tariff": {
-                "GET": "Tariff",
-                "POST": None,
-                "PUT": None
-            },
-            "column_value_description": {
-                "GET": "ColumnValueDescription",
-                "POST": None,
-                "PUT": None
-            },
-            "row_value_description": {
-                "GET": "RowValueDescription",
-                "POST": None,
-                "PUT": None
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='pricegrid', 
                          primary_property='price_grid_id', 
-                         property_mapping=property_mapping, 
                          payload=payload)
     
     def get(self):

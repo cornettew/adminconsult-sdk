@@ -4,32 +4,35 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ProductCategory(Entity):
+
+    is_active = None
+    product_category = None
+    product_category_id = None
+
+    _property_mapping = dict({
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "product_category": {
+            "GET": "ProductCategory",
+            "POST": None,
+            "PUT": None
+        },
+        "product_category_id": {
+            "GET": "ProductCategoryId",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.is_active = None
-        self.product_category = None
-        self.product_category_id = None
-
-        property_mapping = dict({
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "product_category": {
-                "GET": "ProductCategory",
-                "POST": None,
-                "PUT": None
-            },
-            "product_category_id": {
-                "GET": "ProductCategoryId",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='productuses/productcategory', primary_property='product_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='productuses/productcategory', 
+                         primary_property='product_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

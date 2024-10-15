@@ -7,11 +7,12 @@ from dateutil.parser import parse, ParserError
 
 class Entity(Base):
 
-    def __init__(self, client_credentials: ClientCredentials, endpoint: str, primary_property: str, property_mapping: dict, payload: dict=None, endpoint_parent=None, parent_id_property=None, endpoint_suffix=None, child_id_property=None, datetime_properties=[]):
+    _property_mapping: dict
+
+    def __init__(self, client_credentials: ClientCredentials, endpoint: str, primary_property: str, payload: dict=None, endpoint_parent=None, parent_id_property=None, endpoint_suffix=None, child_id_property=None, datetime_properties=[]):
 
         super().__init__(client_credentials=client_credentials)
 
-        self._property_mapping = property_mapping
         self.__test_attribute_mapping()
         self._datetime_properties = datetime_properties
 

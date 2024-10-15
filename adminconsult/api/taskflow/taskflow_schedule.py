@@ -4,32 +4,35 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TaskFlowSchedule(Entity):
+
+    schedule_id: int = None
+    schedule_name = None
+    schedule_active = None
+
+    _property_mapping = dict({
+        'schedule_id': {
+            'GET': 'ScheduleId',
+            'POST': None,
+            'PUT': None
+        },
+        'schedule_name': {
+            'GET': 'ScheduleName',
+            'POST': None,
+            'PUT': None
+        },
+        'schedule_active': {
+            'GET': 'ScheduleActive',
+            'POST': None,
+            'PUT': None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.schedule_id = None
-        self.schedule_name = None
-        self.schedule_active = None
-
-        property_mapping = dict({
-            'schedule_id': {
-                'GET': 'ScheduleId',
-                'POST': None,
-                'PUT': None
-            },
-            'schedule_name': {
-                'GET': 'ScheduleName',
-                'POST': None,
-                'PUT': None
-            },
-            'schedule_active': {
-                'GET': 'ScheduleActive',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='taskflow/taskschedules', primary_property='schedule_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='taskflow/taskschedules', 
+                         primary_property='schedule_id', 
+                         payload=payload)
 
 
     # Overriding _get_entity() because of the requirement to pass datefrom and dateuntil

@@ -4,78 +4,76 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TaskFlowPlanned(Entity):
+
+    task_planning_id: int = None
+    project_id: int = None
+    task_id: int = None
+    schedule_id: int = None
+    planning_start = None
+    planning_stop = None
+    one_time_date = None
+    recurring_deviation_nr = None
+    _recurring_deviation_unit = None
+    task_planning_active = None
+
+    _property_mapping = dict({
+        'task_planning_id': {
+            'GET': 'TaskPlanningId',
+            'POST': 'TaskPlanningId',
+            'PUT': 'TaskPlanningId'
+        },
+        'project_id': {
+            'GET': 'ProjectId',
+            'POST': 'ProjectId',
+            'PUT': None
+        },
+        'task_id': {
+            'GET': 'TaskId',
+            'POST': 'TaskId',
+            'PUT': 'TaskId'
+        },
+        'schedule_id': {
+            'GET': 'ScheduleId',
+            'POST': 'ScheduleId',
+            'PUT': 'ScheduleId'
+        },
+        'planning_start': {
+            'GET': 'PlanningStart',
+            'POST': 'PlanningStart',
+            'PUT': 'PlanningStart'
+        },
+        'planning_stop': {
+            'GET': 'PlanningStop',
+            'POST': 'PlanningStop',
+            'PUT': 'PlanningStop'
+        },
+        'one_time_date': {
+            'GET': 'OneTimeDate',
+            'POST': 'OneTimeDate',
+            'PUT': 'OneTimeDate'
+        },
+        'recurring_deviation_nr': {
+            'GET': 'RecurringDeviationNr',
+            'POST': 'RecurringDeviationNr',
+            'PUT': 'RecurringDeviationNr'
+        },
+        'recurring_deviation_unit': {
+            'GET': 'RecurringDeviationUnit',
+            'POST': 'RecurringDeviationUnit',
+            'PUT': 'RecurringDeviationUnit'
+        },
+        'task_planning_active': {
+            'GET': 'TaskPlanningActive',
+            'POST': 'TaskPlanningActive',
+            'PUT': 'TaskPlanningActive'
+        }
+    })
     
-    def __init__(self, client_credentials: ClientCredentials, payload=None):
-
-        self.task_planning_id = None
-        self.project_id = None
-        self.task_id = None
-        self.schedule_id = None
-        self.planning_start = None
-        self.planning_stop = None
-        self.one_time_date = None
-        self.recurring_deviation_nr = None
-        self._recurring_deviation_unit = None
-        self.task_planning_active = None
-
-        property_mapping = dict({
-            'task_planning_id': {
-                'GET': 'TaskPlanningId',
-                'POST': 'TaskPlanningId',
-                'PUT': 'TaskPlanningId'
-            },
-            'project_id': {
-                'GET': 'ProjectId',
-                'POST': 'ProjectId',
-                'PUT': None
-            },
-            'task_id': {
-                'GET': 'TaskId',
-                'POST': 'TaskId',
-                'PUT': 'TaskId'
-            },
-            'schedule_id': {
-                'GET': 'ScheduleId',
-                'POST': 'ScheduleId',
-                'PUT': 'ScheduleId'
-            },
-            'planning_start': {
-                'GET': 'PlanningStart',
-                'POST': 'PlanningStart',
-                'PUT': 'PlanningStart'
-            },
-            'planning_stop': {
-                'GET': 'PlanningStop',
-                'POST': 'PlanningStop',
-                'PUT': 'PlanningStop'
-            },
-            'one_time_date': {
-                'GET': 'OneTimeDate',
-                'POST': 'OneTimeDate',
-                'PUT': 'OneTimeDate'
-            },
-            'recurring_deviation_nr': {
-                'GET': 'RecurringDeviationNr',
-                'POST': 'RecurringDeviationNr',
-                'PUT': 'RecurringDeviationNr'
-            },
-            'recurring_deviation_unit': {
-                'GET': 'RecurringDeviationUnit',
-                'POST': 'RecurringDeviationUnit',
-                'PUT': 'RecurringDeviationUnit'
-            },
-            'task_planning_active': {
-                'GET': 'TaskPlanningActive',
-                'POST': 'TaskPlanningActive',
-                'PUT': 'TaskPlanningActive'
-            }
-        })
-        
+    def __init__(self, client_credentials: ClientCredentials, payload=None):        
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='taskflow/tasks/plannedtasks', 
                          primary_property='task_planning_id', 
-                         property_mapping=property_mapping, 
                          payload=payload, 
                          endpoint_parent='taskflow/tasks', 
                          parent_id_property='project_id', 

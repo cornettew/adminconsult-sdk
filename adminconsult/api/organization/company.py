@@ -5,168 +5,169 @@ from adminconsult.api.entity_collection import EntityCollection
 
 class Company(Entity):
 
+    bank = None
+    bic = None
+    block_text = None
+    city = None
+    close_date = None
+    company_id: int = None
+    company_name = None
+    country = None
+    email = None
+    fax = None
+    http = None
+    iban = None
+    is_visible = None
+    open_date = None
+    rpr = None
+    rsz = None
+    street_1 = None
+    street_2 = None
+    tel = None
+    vat = None
+    venture_number = None
+    zip_code = None
+
+    _property_mapping = dict({
+        'bank': {
+            'GET': 'Bank',
+            'POST': None,
+            'PUT': None
+        },
+
+        'bic': {
+            'GET': 'Bic',
+            'POST': None,
+            'PUT': None
+        },
+
+        'block_text': {
+            'GET': 'BlockText',
+            'POST': None,
+            'PUT': None
+        },
+
+        'city': {
+            'GET': 'City',
+            'POST': None,
+            'PUT': None
+        },
+
+        'close_date': {
+            'GET': 'CloseDate',
+            'POST': None,
+            'PUT': None
+        },
+
+        'company_id': {
+            'GET': 'CompanyId',
+            'POST': None,
+            'PUT': None
+        },
+
+        'company_name': {
+            'GET': 'CompanyName',
+            'POST': None,
+            'PUT': None
+        },
+
+        'country': {
+            'GET': 'Country',
+            'POST': None,
+            'PUT': None
+        },
+
+        'email': {
+            'GET': 'Email',
+            'POST': None,
+            'PUT': None
+        },
+
+        'fax': {
+            'GET': 'Fax',
+            'POST': None,
+            'PUT': None
+        },
+
+        'http': {
+            'GET': 'Http',
+            'POST': None,
+            'PUT': None
+        },
+
+        'iban': {
+            'GET': 'Iban',
+            'POST': None,
+            'PUT': None
+        },
+
+        'is_visible': {
+            'GET': 'IsVisible',
+            'POST': None,
+            'PUT': None
+        },
+
+        'open_date': {
+            'GET': 'OpenDate',
+            'POST': None,
+            'PUT': None
+        },
+
+        'rpr': {
+            'GET': 'Rpr',
+            'POST': None,
+            'PUT': None
+        },
+
+        'rsz': {
+            'GET': 'Rsz',
+            'POST': None,
+            'PUT': None
+        },
+
+        'street_1': {
+            'GET': 'Street1',
+            'POST': None,
+            'PUT': None
+        },
+
+        'street_2': {
+            'GET': 'Street2',
+            'POST': None,
+            'PUT': None
+        },
+
+        'tel': {
+            'GET': 'Tel',
+            'POST': None,
+            'PUT': None
+        },
+
+        'vat': {
+            'GET': 'Vat',
+            'POST': None,
+            'PUT': None
+        },
+
+        'venture_number': {
+            'GET': 'VentureNumber',
+            'POST': None,
+            'PUT': None
+        },
+
+        'zip_code': {
+            'GET': 'Zipcode',
+            'POST': None,
+            'PUT': None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.bank = None
-        self.bic = None
-        self.block_text = None
-        self.city = None
-        self.close_date = None
-        self.company_id = None
-        self.company_name = None
-        self.country = None
-        self.email = None
-        self.fax = None
-        self.http = None
-        self.iban = None
-        self.is_visible = None
-        self.open_date = None
-        self.rpr = None
-        self.rsz = None
-        self.street_1 = None
-        self.street_2 = None
-        self.tel = None
-        self.vat = None
-        self.venture_number = None
-        self.zip_code = None
-
-        property_mapping = dict({
-            'bank': {
-                'GET': 'Bank',
-                'POST': None,
-                'PUT': None
-            },
-
-            'bic': {
-                'GET': 'Bic',
-                'POST': None,
-                'PUT': None
-            },
-
-            'block_text': {
-                'GET': 'BlockText',
-                'POST': None,
-                'PUT': None
-            },
-
-            'city': {
-                'GET': 'City',
-                'POST': None,
-                'PUT': None
-            },
-
-            'close_date': {
-                'GET': 'CloseDate',
-                'POST': None,
-                'PUT': None
-            },
-
-            'company_id': {
-                'GET': 'CompanyId',
-                'POST': None,
-                'PUT': None
-            },
-
-            'company_name': {
-                'GET': 'CompanyName',
-                'POST': None,
-                'PUT': None
-            },
-
-            'country': {
-                'GET': 'Country',
-                'POST': None,
-                'PUT': None
-            },
-
-            'email': {
-                'GET': 'Email',
-                'POST': None,
-                'PUT': None
-            },
-
-            'fax': {
-                'GET': 'Fax',
-                'POST': None,
-                'PUT': None
-            },
-
-            'http': {
-                'GET': 'Http',
-                'POST': None,
-                'PUT': None
-            },
-
-            'iban': {
-                'GET': 'Iban',
-                'POST': None,
-                'PUT': None
-            },
-
-            'is_visible': {
-                'GET': 'IsVisible',
-                'POST': None,
-                'PUT': None
-            },
-
-            'open_date': {
-                'GET': 'OpenDate',
-                'POST': None,
-                'PUT': None
-            },
-
-            'rpr': {
-                'GET': 'Rpr',
-                'POST': None,
-                'PUT': None
-            },
-
-            'rsz': {
-                'GET': 'Rsz',
-                'POST': None,
-                'PUT': None
-            },
-
-            'street_1': {
-                'GET': 'Street1',
-                'POST': None,
-                'PUT': None
-            },
-
-            'street_2': {
-                'GET': 'Street2',
-                'POST': None,
-                'PUT': None
-            },
-
-            'tel': {
-                'GET': 'Tel',
-                'POST': None,
-                'PUT': None
-            },
-
-            'vat': {
-                'GET': 'Vat',
-                'POST': None,
-                'PUT': None
-            },
-
-            'venture_number': {
-                'GET': 'VentureNumber',
-                'POST': None,
-                'PUT': None
-            },
-
-            'zip_code': {
-                'GET': 'Zipcode',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='companies', primary_property='company_id', property_mapping=property_mapping, payload=payload)
-                                                                                
-
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='companies', 
+                         primary_property='company_id', 
+                         payload=payload)
         
     def _get_entity(self, id: int):
 

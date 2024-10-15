@@ -5,61 +5,64 @@ from adminconsult.api.entity_collection import EntityCollection
 
 class EmployeeProfile(Entity):
 
+    profile_id: int = None
+    profile_name = None
+    is_functional = None
+    is_operational = None
+    is_relational = None
+    is_skill = None
+    is_fixed = None
+    is_public = None
+            
+    _property_mapping = dict({
+        "profile_id": {
+            "GET": "ProfileId",
+            "POST": None,
+            "PUT": None
+        },
+        "profile_name": {
+            "GET": "ProfileName",
+            "POST": None,
+            "PUT": None
+        },
+        "is_functional": {
+            "GET": "IsFunctional",
+            "POST": None,
+            "PUT": None
+        },
+        "is_operational": {
+            "GET": "IsOperational",
+            "POST": None,
+            "PUT": None
+        },
+        "is_relational": {
+            "GET": "IsRelational",
+            "POST": None,
+            "PUT": None
+        },
+        "is_skill": {
+            "GET": "IsSkill",
+            "POST": None,
+            "PUT": None
+        },
+        "is_fixed": {
+            "GET": "IsFixed",
+            "POST": None,
+            "PUT": None
+        },
+        "is_public": {
+            "GET": "IsPublic",
+            "POST": None,
+            "PUT": None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.profile_id = None
-        self.profile_name = None
-        self.is_functional = None
-        self.is_operational = None
-        self.is_relational = None
-        self.is_skill = None
-        self.is_fixed = None
-        self.is_public = None
-                
-        property_mapping = dict({
-            "profile_id": {
-                "GET": "ProfileId",
-                "POST": None,
-                "PUT": None
-            },
-            "profile_name": {
-                "GET": "ProfileName",
-                "POST": None,
-                "PUT": None
-            },
-            "is_functional": {
-                "GET": "IsFunctional",
-                "POST": None,
-                "PUT": None
-            },
-            "is_operational": {
-                "GET": "IsOperational",
-                "POST": None,
-                "PUT": None
-            },
-            "is_relational": {
-                "GET": "IsRelational",
-                "POST": None,
-                "PUT": None
-            },
-            "is_skill": {
-                "GET": "IsSkill",
-                "POST": None,
-                "PUT": None
-            },
-            "is_fixed": {
-                "GET": "IsFixed",
-                "POST": None,
-                "PUT": None
-            },
-            "is_public": {
-                "GET": "IsPublic",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='employeeprofiles', primary_property='profile_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='employeeprofiles', 
+                         primary_property='profile_id', 
+                         payload=payload)
 
     #IMPROV# Overriding _get_entity() because there is no /api/v1/employeeprofiles/{id} endpoint
     def _get_entity(self, id: int):

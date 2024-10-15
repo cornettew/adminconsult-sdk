@@ -5,40 +5,41 @@ from adminconsult.api.entity_collection import EntityCollection
 
 class Department(Entity):
 
+    company_id: int = None
+    department_id: int = None
+    department_name = None
+    parent_department = None
+
+    _property_mapping = dict({
+        'company_id': {
+            'GET': 'CompanyId',
+            'POST': None,
+            'PUT': None
+        },
+        'department_id': {
+            'GET': 'DepartmentId',
+            'POST': None,
+            'PUT': None
+        },
+        'department_name': {
+            'GET': 'DepartmentName',
+            'POST': None,
+            'PUT': None
+        },
+        'parent_department': {
+            'GET': 'ParentDepartment',
+            'POST': None,
+            'PUT': None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, company_id: int, payload=None):
 
         self.company_id = company_id
-        self.department_id = None
-        self.department_name = None
-        self.parent_department = None
-
-        property_mapping = dict({
-            'company_id': {
-                'GET': 'CompanyId',
-                'POST': None,
-                'PUT': None
-            },
-            'department_id': {
-                'GET': 'DepartmentId',
-                'POST': None,
-                'PUT': None
-            },
-            'department_name': {
-                'GET': 'DepartmentName',
-                'POST': None,
-                'PUT': None
-            },
-            'parent_department': {
-                'GET': 'ParentDepartment',
-                'POST': None,
-                'PUT': None
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='companies/{}/departments'.format(self.company_id),
                          primary_property='department_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          endpoint_parent='companies',
                          parent_id_property='company_id',

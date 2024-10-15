@@ -4,50 +4,53 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ExpenseItem(Entity):
+
+    account_nr = None
+    expense_type = None
+    expense_type_id: int = None
+    invoicable = None
+    is_active = None
+    is_km = None
+
+    _property_mapping = dict({
+        "account_nr": {
+            "GET": "AccountNr",
+            "POST": None,
+            "PUT": None
+        },
+        "expense_type": {
+            "GET": "ExpenseType",
+            "POST": None,
+            "PUT": None
+        },
+        "expense_type_id": {
+            "GET": "ExpenseTypeId",
+            "POST": None,
+            "PUT": None
+        },
+        "invoicable": {
+            "GET": "Invoicable",
+            "POST": None,
+            "PUT": None
+        },
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "is_km": {
+            "GET": "IsKm",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.account_nr = None
-        self.expense_type = None
-        self.expense_type_id = None
-        self.invoicable = None
-        self.is_active = None
-        self.is_km = None
-
-        property_mapping = dict({
-            "account_nr": {
-                "GET": "AccountNr",
-                "POST": None,
-                "PUT": None
-            },
-            "expense_type": {
-                "GET": "ExpenseType",
-                "POST": None,
-                "PUT": None
-            },
-            "expense_type_id": {
-                "GET": "ExpenseTypeId",
-                "POST": None,
-                "PUT": None
-            },
-            "invoicable": {
-                "GET": "Invoicable",
-                "POST": None,
-                "PUT": None
-            },
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "is_km": {
-                "GET": "IsKm",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='expensedeclarations/expenseitem', primary_property='expense_type_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='expensedeclarations/expenseitem', 
+                         primary_property='expense_type_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

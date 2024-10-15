@@ -4,89 +4,90 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class CustomerEmailData(Entity):
+
+    customer_email_recipient_id: int = None
+    customer_id: int = None
+    document_group = None
+    document_group_id: int = None
+    document_template = None
+    document_template_id: int = None
+    document_type = None
+    document_type_description = None
+    email = None
+    to_recipient = None
+    cc_recipient = None
+    bcc_recipient = None
+
+    _property_mapping = dict({
+        "customer_email_recipient_id": {
+            "GET": "CustomerEmailRecipientId",
+            "POST": None,
+            "PUT": "CustomerEmailRecipientId"
+        },
+        "customer_id": {
+            "GET": "CustomerId",
+            "POST": "CustomerId",
+            "PUT": None
+        },
+        "document_group": {
+            "GET": "DocumentGroup",
+            "POST": None,
+            "PUT": None
+        },
+        "document_group_id": {
+            "GET": "DocumentGroupId",
+            "POST": "DocumentGroupId",
+            "PUT": "DocumentGroupId"
+        },
+        "document_template": {
+            "GET": "DocumentTemplate",
+            "POST": None,
+            "PUT": None
+        },
+        "document_template_id": {
+            "GET": "DocumentTemplateId",
+            "POST": "DocumentTemplateId",
+            "PUT": "DocumentTemplateId"
+        },
+        "document_type": {
+            "GET": "DocumentType",
+            "POST": "DocumentType",
+            "PUT": "DocumentType"
+        },
+        "document_type_description": {
+            "GET": "DocumentTypeDescription",
+            "POST": None,
+            "PUT": None
+        },
+        "email": {
+            "GET": "Email",
+            "POST": "Email",
+            "PUT": "Email"
+        },
+        "to_recipient": {
+            "GET": "ToRecipient",
+            "POST": "ToRecipient",
+            "PUT": "ToRecipient"
+        },
+        "cc_recipient": {
+            "GET": "CcRecipient",
+            "POST": "CcRecipient",
+            "PUT": "CcRecipient"
+        },
+        "bcc_recipient": {
+            "GET": "BccRecipient",
+            "POST": "BccRecipient",
+            "PUT": "BccRecipient"
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, customer_id, payload=None):
 
-        self.customer_email_recipient_id = None
         self.customer_id = customer_id
-        self.document_group = None
-        self.document_group_id = None
-        self.document_template = None
-        self.document_template_id = None
-        self.document_type = None
-        self.document_type_description = None
-        self.email = None
-        self.to_recipient = None
-        self.cc_recipient = None
-        self.bcc_recipient = None
-
-        property_mapping = dict({
-            "customer_email_recipient_id": {
-                "GET": "CustomerEmailRecipientId",
-                "POST": None,
-                "PUT": "CustomerEmailRecipientId"
-            },
-            "customer_id": {
-                "GET": "CustomerId",
-                "POST": "CustomerId",
-                "PUT": None
-            },
-            "document_group": {
-                "GET": "DocumentGroup",
-                "POST": None,
-                "PUT": None
-            },
-            "document_group_id": {
-                "GET": "DocumentGroupId",
-                "POST": "DocumentGroupId",
-                "PUT": "DocumentGroupId"
-            },
-            "document_template": {
-                "GET": "DocumentTemplate",
-                "POST": None,
-                "PUT": None
-            },
-            "document_template_id": {
-                "GET": "DocumentTemplateId",
-                "POST": "DocumentTemplateId",
-                "PUT": "DocumentTemplateId"
-            },
-            "document_type": {
-                "GET": "DocumentType",
-                "POST": "DocumentType",
-                "PUT": "DocumentType"
-            },
-            "document_type_description": {
-                "GET": "DocumentTypeDescription",
-                "POST": None,
-                "PUT": None
-            },
-            "email": {
-                "GET": "Email",
-                "POST": "Email",
-                "PUT": "Email"
-            },
-            "to_recipient": {
-                "GET": "ToRecipient",
-                "POST": "ToRecipient",
-                "PUT": "ToRecipient"
-            },
-            "cc_recipient": {
-                "GET": "CcRecipient",
-                "POST": "CcRecipient",
-                "PUT": "CcRecipient"
-            },
-            "bcc_recipient": {
-                "GET": "BccRecipient",
-                "POST": "BccRecipient",
-                "PUT": "BccRecipient"
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='customers/{}/emaildata'.format(self.customer_id), 
                          primary_property='customer_email_recipient_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          endpoint_parent='customers',
                          parent_id_property='customer_id',

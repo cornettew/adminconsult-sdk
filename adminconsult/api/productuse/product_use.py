@@ -4,110 +4,113 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ProductUse(Entity):
+
+    customer_id: int = None
+    date_product_use = None
+    internal_remarks = None
+    invoicable = None
+    invoice_id: int = None
+    period = None
+    person_id: int = None
+    product_id: int = None
+    product_number = None
+    product_price = None
+    product_use_id: int = None
+    product_vat = None
+    project_id: int = None
+    ready_for_invoice = None
+    remarks = None
+    repayable = None
+
+    _property_mapping = dict({
+        "customer_id": {
+            "GET": "CustomerId",
+            "POST": None,
+            "PUT": None
+        },
+        "date_product_use": {
+            "GET": "DateProductUse",
+            "POST": "DateProductUse",
+            "PUT": "DateProductUse"
+        },
+        "internal_remarks": {
+            "GET": "InternalRemarks",
+            "POST": "InternalRemarks",
+            "PUT": "InternalRemarks"
+        },
+        "invoicable": {
+            "GET": "Invoicable",
+            "POST": "Invoicable",
+            "PUT": "Invoicable"
+        },
+        "invoice_id": {
+            "GET": "InvoiceId",
+            "POST": None,
+            "PUT": None
+        },
+        "period": {
+            "GET": "Period",
+            "POST": "Period",
+            "PUT": "Period"
+        },
+        "person_id": {
+            "GET": "PersonId",
+            "POST": "PersonId",
+            "PUT": "PersonId"
+        },
+        "product_id": {
+            "GET": "ProductId",
+            "POST": "ProductId",
+            "PUT": "ProductId"
+        },
+        "product_number": {
+            "GET": "ProductNumber",
+            "POST": "ProductNumber",
+            "PUT": "ProductNumber"
+        },
+        "product_price": {
+            "GET": "ProductPrice",
+            "POST": None,
+            "PUT": None
+        },
+        "product_use_id": {
+            "GET": "ProductUseId",
+            "POST": None,
+            "PUT": "ProductUseId"
+        },
+        "product_vat": {
+            "GET": "ProductVat",
+            "POST": None,
+            "PUT": None
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": "ProjectId",
+            "PUT": "ProjectId"
+        },
+        "ready_for_invoice": {
+            "GET": "ReadyForInvoice",
+            "POST": "ReadyForInvoice",
+            "PUT": "ReadyForInvoice"
+        },
+        "remarks": {
+            "GET": "Remarks",
+            "POST": "Remarks",
+            "PUT": "Remarks"
+        },
+        "repayable": {
+            "GET": "Repayable",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.customer_id = None
-        self.date_product_use = None
-        self.internal_remarks = None
-        self.invoicable = None
-        self.invoice_id = None
-        self.period = None
-        self.person_id = None
-        self.product_id = None
-        self.product_number = None
-        self.product_price = None
-        self.product_use_id = None
-        self.product_vat = None
-        self.project_id = None
-        self.ready_for_invoice = None
-        self.remarks = None
-        self.repayable = None
-
-        property_mapping = dict({
-            "customer_id": {
-                "GET": "CustomerId",
-                "POST": None,
-                "PUT": None
-            },
-            "date_product_use": {
-                "GET": "DateProductUse",
-                "POST": "DateProductUse",
-                "PUT": "DateProductUse"
-            },
-            "internal_remarks": {
-                "GET": "InternalRemarks",
-                "POST": "InternalRemarks",
-                "PUT": "InternalRemarks"
-            },
-            "invoicable": {
-                "GET": "Invoicable",
-                "POST": "Invoicable",
-                "PUT": "Invoicable"
-            },
-            "invoice_id": {
-                "GET": "InvoiceId",
-                "POST": None,
-                "PUT": None
-            },
-            "period": {
-                "GET": "Period",
-                "POST": "Period",
-                "PUT": "Period"
-            },
-            "person_id": {
-                "GET": "PersonId",
-                "POST": "PersonId",
-                "PUT": "PersonId"
-            },
-            "product_id": {
-                "GET": "ProductId",
-                "POST": "ProductId",
-                "PUT": "ProductId"
-            },
-            "product_number": {
-                "GET": "ProductNumber",
-                "POST": "ProductNumber",
-                "PUT": "ProductNumber"
-            },
-            "product_price": {
-                "GET": "ProductPrice",
-                "POST": None,
-                "PUT": None
-            },
-            "product_use_id": {
-                "GET": "ProductUseId",
-                "POST": None,
-                "PUT": "ProductUseId"
-            },
-            "product_vat": {
-                "GET": "ProductVat",
-                "POST": None,
-                "PUT": None
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": "ProjectId",
-                "PUT": "ProjectId"
-            },
-            "ready_for_invoice": {
-                "GET": "ReadyForInvoice",
-                "POST": "ReadyForInvoice",
-                "PUT": "ReadyForInvoice"
-            },
-            "remarks": {
-                "GET": "Remarks",
-                "POST": "Remarks",
-                "PUT": "Remarks"
-            },
-            "repayable": {
-                "GET": "Repayable",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='productuses', primary_property='product_use_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='productuses', 
+                         primary_property='product_use_id',
+                         payload=payload)
 
     def create(self):
         

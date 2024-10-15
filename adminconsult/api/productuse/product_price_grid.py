@@ -4,44 +4,47 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ProductPriceGrid(Entity):
+
+    from_quantity = None
+    product_id: int = None
+    product_price = None
+    product_price_grid_id: int = None
+    to_quantity = None
+
+    _property_mapping = dict({
+        "from_quantity": {
+            "GET": "FromQuantity",
+            "POST": None,
+            "PUT": None
+        },
+        "product_id": {
+            "GET": "ProductId",
+            "POST": None,
+            "PUT": None
+        },
+        "product_price": {
+            "GET": "ProductPrice",
+            "POST": None,
+            "PUT": None
+        },
+        "product_price_grid_id": {
+            "GET": "ProductPriceGridId",
+            "POST": None,
+            "PUT": None
+        },
+        "to_quantity": {
+            "GET": "ToQuantity",
+            "POST": None,
+            "PUT": None
+        },
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.from_quantity = None
-        self.product_id = None
-        self.product_price = None
-        self.product_price_grid_id = None
-        self.to_quantity = None
-
-        property_mapping = dict({
-            "from_quantity": {
-                "GET": "FromQuantity",
-                "POST": None,
-                "PUT": None
-            },
-            "product_id": {
-                "GET": "ProductId",
-                "POST": None,
-                "PUT": None
-            },
-            "product_price": {
-                "GET": "ProductPrice",
-                "POST": None,
-                "PUT": None
-            },
-            "product_price_grid_id": {
-                "GET": "ProductPriceGridId",
-                "POST": None,
-                "PUT": None
-            },
-            "to_quantity": {
-                "GET": "ToQuantity",
-                "POST": None,
-                "PUT": None
-            },
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='productuses/productpricegrid', primary_property='product_price_grid_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='productuses/productpricegrid', 
+                         primary_property='product_price_grid_id', 
+                         payload=payload)
 
     def _get_entity(self, id: int):
 

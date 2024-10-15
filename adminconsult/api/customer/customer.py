@@ -10,345 +10,344 @@ from datetime import datetime
 
 class Customer(Entity):
 
+    acc_code = None
+    accountancy_software = None
+    accountancy_software_label = None
+    city = None
+    commercial_name = None
+    # Countries are validated for existance. Id and value are automatically translated using countries endpoint
+    _country_code = None
+    _country_id: int = None
+    _country_name = None
+    company_id: int = None
+    creation_date = None
+    cupboard_number = None
+    curreny = None
+    cust_code = None
+    cust_kind = None
+    customer_crm_type = None
+    customer_group = None
+    customer_group_label = None
+    customer_id: int = None
+    date_of_birth = None
+    disabled_date = None
+    distance = None
+    email = None
+    fax = None
+    first_name = None
+    holding = None
+    home_page = None
+    house_box = None
+    house_nr = None
+    is_active = None
+    is_company = None
+    # Languages are validated for existance. Id and value are automatically translated using list 19
+    _language_id: int = None
+    _language = None
+    mobile = None
+    nace_code = None
+    name = None
+    nationality = None
+    newsletter = None
+    phone = None
+    phone2 = None
+    place_of_birth = None
+    reason_for_leaving = None
+    registration_nr = None
+    remarks = None
+    rpr = None
+    sector = None
+    sector_id: int = None
+    sex = None
+    social_security_number = None
+    street_1 = None
+    street_2 = None
+    # Titles are validated for existance. Id and value are automatically translated using list 2
+    _title_id: int = None
+    _title = None
+    vat_nr = None
+    zip_code = None
+
+    _property_mapping = dict({
+        'acc_code': {
+            'GET': 'AccCode',
+            'POST': 'AccCode',
+            'PUT': 'AccCode'
+        },
+        'accountancy_software': {
+            'GET': 'AccountancySoftware',
+            'POST': None,
+            'PUT': None
+        },
+        'accountancy_software_label': {
+            'GET': 'AccountancySoftwareLabel',
+            'POST': None,
+            'PUT': None
+        },
+        'city': {
+            'GET': None,
+            'POST': 'City',
+            'PUT': 'City'
+        },
+        'commercial_name': {
+            'GET': 'CommercialName',
+            'POST': 'CommercialName',
+            'PUT': 'CommercialName'
+        },
+        'country_code': {
+            'GET': None,
+            'POST': 'CountryCode',
+            'PUT': 'CountryCode'
+        },
+        'country_id': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'country_name': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'company_id': {
+            'GET': 'CompanyId',
+            'POST': None,
+            'PUT': None
+        },
+        'creation_date': {
+            'GET': 'CreationDate',
+            'POST': None,
+            # Removed this parameter via def _allowed_put_parameters()
+            'PUT': 'CreationDate'
+        },
+        'cupboard_number': {
+            'GET': 'CupboardNumber',
+            'POST': 'CupboardNumber',
+            'PUT': 'CupboardNumber'
+        },
+        'curreny': {
+            'GET': 'Currency',
+            'POST': None,
+            'PUT': None
+        },
+        'cust_code': {
+            'GET': 'CustCode',
+            'POST': 'CustCode',
+            'PUT': 'CustCode'
+        },
+        'cust_kind': {
+            'GET': 'CustKind',
+            'POST': None,
+            'PUT': None
+        },
+        'customer_crm_type': {
+            'GET': 'CustomerCrmType',
+            'POST': 'CustomerCrmType',
+            'PUT': 'CustomerCrmType'
+        },
+        'customer_group': {
+            'GET': 'CustomerGroup',
+            'POST': 'CustomerGroup',
+            'PUT': 'CustomerGroup'
+        },
+        'customer_group_label': {
+            'GET': 'CustomerGroupLabel',
+            'POST': None,
+            'PUT': None
+        },
+        'customer_id': {
+            'GET': 'CustomerId',
+            'POST': 'CustomerId',
+            'PUT': 'CustomerId'
+        },
+        'date_of_birth': {
+            'GET': 'DateOfBirth',
+            'POST': None,
+            'PUT': None
+        },
+        'disabled_date': {
+            'GET': 'DisabledDate',
+            'POST': None,
+            'PUT': None
+        },
+        'distance': {
+            'GET': 'Distance',
+            'POST': None,
+            'PUT': None
+        },
+        'email': {
+            'GET': 'Email',
+            'POST': 'Email',
+            'PUT': 'Email'
+        },
+        'fax': {
+            'GET': 'Fax',
+            'POST': None,
+            'PUT': None
+        },
+        'first_name': {
+            'GET': 'Firstname',
+            'POST': 'Firstname',
+            'PUT': 'Firstname'
+        },
+        'holding': {
+            'GET': 'Holding',
+            'POST': None,
+            'PUT': None
+        },
+        'home_page': {
+            'GET': 'Homepage',
+            'POST': 'Homepage',
+            'PUT': 'Homepage'
+        },
+        'house_box': {
+            'GET': None,
+            'POST': 'Box',
+            'PUT': 'Box'
+        },
+        'house_nr': {
+            'GET': None,
+            'POST': 'Nr',
+            'PUT': 'Nr'
+        },
+        'is_active': {
+            'GET': 'IsActive',
+            'POST': None,
+            'PUT': None
+        },
+        'is_company': {
+            'GET': 'IsCompany',
+            'POST': 'IsCompany',
+            'PUT': 'IsCompany'
+        },
+        'language': {
+            'GET': 'Language',
+            'POST': 'Language',
+            'PUT': 'Language'
+        },
+        'language_id': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'mobile': {
+            'GET': 'Mobile',
+            'POST': 'Mobile',
+            'PUT': 'Mobile'
+        },
+        'nace_code': {
+            'GET': 'NaceCode',
+            'POST': 'NaceCode',
+            'PUT': 'NaceCode'
+        },
+        'name': {
+            'GET': 'Name',
+            'POST': 'Name',
+            'PUT': 'Name'
+        },
+        'nationality': {
+            'GET': 'Nationality',
+            'POST': None,
+            'PUT': None
+        },
+        'newsletter': {
+            'GET': 'Newsletter',
+            'POST': None,
+            'PUT': None
+        },
+        'phone': {
+            'GET': 'Phone',
+            'POST': 'Phone',
+            'PUT': 'Phone'
+        },
+        'phone2': {
+            'GET': 'Phone2',
+            'POST': None,
+            'PUT': None
+        },
+        'place_of_birth': {
+            'GET': 'PlaceOfBirth',
+            'POST': None,
+            'PUT': None
+        },
+        'reason_for_leaving': {
+            'GET': 'ReasonForLeaving',
+            'POST': None,
+            'PUT': None
+        },
+        'registration_nr': {
+            'GET': 'RegistrationNr',
+            'POST': 'RegistrationNr',
+            'PUT': 'RegistrationNr'
+        },
+        'remarks': {
+            'GET': 'Remarks',
+            'POST': 'Remarks',
+            'PUT': 'Remarks'
+        },
+        'rpr': {
+            'GET': 'RPR',
+            'POST': 'RPR',
+            'PUT': 'RPR'
+        },
+        'sector': {
+            'GET': 'Sector',
+            'POST': None,
+            'PUT': None
+        },
+        'sector_id': {
+            'GET': 'SectorId',
+            'POST': None,
+            'PUT': None
+        },
+        'sex': {
+            'GET': 'Sex',
+            'POST': None,
+            'PUT': None
+        },
+        'social_security_number': {
+            'GET': 'SocialSecurityNumber',
+            'POST': 'SocialSecurityNumber',
+            'PUT': 'SocialSecurityNumber'
+        },
+        'street_1': {
+            'GET': None,
+            'POST': 'Street1',
+            'PUT': 'Street1'
+        },
+        'street_2': {
+            'GET': None,
+            'POST': 'Street2',
+            'PUT': 'Street2'
+        },
+        # Title id is not available in the customers endpoints
+        'title_id': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'title': {
+            'GET': 'Title',
+            'POST': 'Title',
+            'PUT': 'Title'
+        },
+        'vat_nr': {
+            'GET': 'VATNr',
+            'POST': 'VATNr',
+            'PUT': 'VATNr'
+        },
+        'zip_code': {
+            'GET': None,
+            'POST': 'Zipcode',
+            'PUT': 'Zipcode'
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-
-        self.acc_code = None
-        self.accountancy_software = None
-        self.accountancy_software_label = None
-        self.city = None
-        self.commercial_name = None
-        # Countries are validated for existance. Id and value are automatically translated using countries endpoint
-        self._country_code = None
-        self._country_id = None
-        self._country_name = None
-        self.company_id = None
-        self.creation_date = None
-        self.cupboard_number = None
-        self.curreny = None
-        self.cust_code = None
-        self.cust_kind = None
-        self.customer_crm_type = None
-        self.customer_group = None
-        self.customer_group_label = None
-        self.customer_id = None
-        self.date_of_birth = None
-        self.disabled_date = None
-        self.distance = None
-        self.email = None
-        self.fax = None
-        self.first_name = None
-        self.holding = None
-        self.home_page = None
-        self.house_box = None
-        self.house_nr = None
-        self.is_active = None
-        self.is_company = None
-        # Languages are validated for existance. Id and value are automatically translated using list 19
-        self._language_id = None
-        self._language = None
-        self.mobile = None
-        self.nace_code = None
-        self.name = None
-        self.nationality = None
-        self.newsletter = None
-        self.phone = None
-        self.phone2 = None
-        self.place_of_birth = None
-        self.reason_for_leaving = None
-        self.registration_nr = None
-        self.remarks = None
-        self.rpr = None
-        self.sector = None
-        self.sector_id = None
-        self.sex = None
-        self.social_security_number = None
-        self.street_1 = None
-        self.street_2 = None
-        # Titles are validated for existance. Id and value are automatically translated using list 2
-        self._title_id = None
-        self._title = None
-        self.vat_nr = None
-        self.zip_code = None
-
-        property_mapping = dict({
-            'acc_code': {
-                'GET': 'AccCode',
-                'POST': 'AccCode',
-                'PUT': 'AccCode'
-            },
-            'accountancy_software': {
-                'GET': 'AccountancySoftware',
-                'POST': None,
-                'PUT': None
-            },
-            'accountancy_software_label': {
-                'GET': 'AccountancySoftwareLabel',
-                'POST': None,
-                'PUT': None
-            },
-            'city': {
-                'GET': None,
-                'POST': 'City',
-                'PUT': 'City'
-            },
-            'commercial_name': {
-                'GET': 'CommercialName',
-                'POST': 'CommercialName',
-                'PUT': 'CommercialName'
-            },
-            'country_code': {
-                'GET': None,
-                'POST': 'CountryCode',
-                'PUT': 'CountryCode'
-            },
-            'country_id': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'country_name': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'company_id': {
-                'GET': 'CompanyId',
-                'POST': None,
-                'PUT': None
-            },
-            'creation_date': {
-                'GET': 'CreationDate',
-                'POST': None,
-                # Removed this parameter via def _allowed_put_parameters()
-                'PUT': 'CreationDate'
-            },
-            'cupboard_number': {
-                'GET': 'CupboardNumber',
-                'POST': 'CupboardNumber',
-                'PUT': 'CupboardNumber'
-            },
-            'curreny': {
-                'GET': 'Currency',
-                'POST': None,
-                'PUT': None
-            },
-            'cust_code': {
-                'GET': 'CustCode',
-                'POST': 'CustCode',
-                'PUT': 'CustCode'
-            },
-            'cust_kind': {
-                'GET': 'CustKind',
-                'POST': None,
-                'PUT': None
-            },
-            'customer_crm_type': {
-                'GET': 'CustomerCrmType',
-                'POST': 'CustomerCrmType',
-                'PUT': 'CustomerCrmType'
-            },
-            'customer_group': {
-                'GET': 'CustomerGroup',
-                'POST': 'CustomerGroup',
-                'PUT': 'CustomerGroup'
-            },
-            'customer_group_label': {
-                'GET': 'CustomerGroupLabel',
-                'POST': None,
-                'PUT': None
-            },
-            'customer_id': {
-                'GET': 'CustomerId',
-                'POST': 'CustomerId',
-                'PUT': 'CustomerId'
-            },
-            'date_of_birth': {
-                'GET': 'DateOfBirth',
-                'POST': None,
-                'PUT': None
-            },
-            'disabled_date': {
-                'GET': 'DisabledDate',
-                'POST': None,
-                'PUT': None
-            },
-            'distance': {
-                'GET': 'Distance',
-                'POST': None,
-                'PUT': None
-            },
-            'email': {
-                'GET': 'Email',
-                'POST': 'Email',
-                'PUT': 'Email'
-            },
-            'fax': {
-                'GET': 'Fax',
-                'POST': None,
-                'PUT': None
-            },
-            'first_name': {
-                'GET': 'Firstname',
-                'POST': 'Firstname',
-                'PUT': 'Firstname'
-            },
-            'holding': {
-                'GET': 'Holding',
-                'POST': None,
-                'PUT': None
-            },
-            'home_page': {
-                'GET': 'Homepage',
-                'POST': 'Homepage',
-                'PUT': 'Homepage'
-            },
-            'house_box': {
-                'GET': None,
-                'POST': 'Box',
-                'PUT': 'Box'
-            },
-            'house_nr': {
-                'GET': None,
-                'POST': 'Nr',
-                'PUT': 'Nr'
-            },
-            'is_active': {
-                'GET': 'IsActive',
-                'POST': None,
-                'PUT': None
-            },
-            'is_company': {
-                'GET': 'IsCompany',
-                'POST': 'IsCompany',
-                'PUT': 'IsCompany'
-            },
-            'language': {
-                'GET': 'Language',
-                'POST': 'Language',
-                'PUT': 'Language'
-            },
-            'language_id': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'mobile': {
-                'GET': 'Mobile',
-                'POST': 'Mobile',
-                'PUT': 'Mobile'
-            },
-            'nace_code': {
-                'GET': 'NaceCode',
-                'POST': 'NaceCode',
-                'PUT': 'NaceCode'
-            },
-            'name': {
-                'GET': 'Name',
-                'POST': 'Name',
-                'PUT': 'Name'
-            },
-            'nationality': {
-                'GET': 'Nationality',
-                'POST': None,
-                'PUT': None
-            },
-            'newsletter': {
-                'GET': 'Newsletter',
-                'POST': None,
-                'PUT': None
-            },
-            'phone': {
-                'GET': 'Phone',
-                'POST': 'Phone',
-                'PUT': 'Phone'
-            },
-            'phone2': {
-                'GET': 'Phone2',
-                'POST': None,
-                'PUT': None
-            },
-            'place_of_birth': {
-                'GET': 'PlaceOfBirth',
-                'POST': None,
-                'PUT': None
-            },
-            'reason_for_leaving': {
-                'GET': 'ReasonForLeaving',
-                'POST': None,
-                'PUT': None
-            },
-            'registration_nr': {
-                'GET': 'RegistrationNr',
-                'POST': 'RegistrationNr',
-                'PUT': 'RegistrationNr'
-            },
-            'remarks': {
-                'GET': 'Remarks',
-                'POST': 'Remarks',
-                'PUT': 'Remarks'
-            },
-            'rpr': {
-                'GET': 'RPR',
-                'POST': 'RPR',
-                'PUT': 'RPR'
-            },
-            'sector': {
-                'GET': 'Sector',
-                'POST': None,
-                'PUT': None
-            },
-            'sector_id': {
-                'GET': 'SectorId',
-                'POST': None,
-                'PUT': None
-            },
-            'sex': {
-                'GET': 'Sex',
-                'POST': None,
-                'PUT': None
-            },
-            'social_security_number': {
-                'GET': 'SocialSecurityNumber',
-                'POST': 'SocialSecurityNumber',
-                'PUT': 'SocialSecurityNumber'
-            },
-            'street_1': {
-                'GET': None,
-                'POST': 'Street1',
-                'PUT': 'Street1'
-            },
-            'street_2': {
-                'GET': None,
-                'POST': 'Street2',
-                'PUT': 'Street2'
-            },
-            # Title id is not available in the customers endpoints
-            'title_id': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'title': {
-                'GET': 'Title',
-                'POST': 'Title',
-                'PUT': 'Title'
-            },
-            'vat_nr': {
-                'GET': 'VATNr',
-                'POST': 'VATNr',
-                'PUT': 'VATNr'
-            },
-            'zip_code': {
-                'GET': None,
-                'POST': 'Zipcode',
-                'PUT': 'Zipcode'
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='customers', 
                          primary_property='customer_id', 
-                         property_mapping=property_mapping, 
                          datetime_properties=['date_of_birth', 'creation_date', 'disabled_date'],
                          payload=payload)
 

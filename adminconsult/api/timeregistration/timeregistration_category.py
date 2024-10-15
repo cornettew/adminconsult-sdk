@@ -4,32 +4,35 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TimeregistrationCategory(Entity):
+
+    is_active = None
+    category = None
+    category_id = None
+
+    _property_mapping = dict({
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "category": {
+            "GET": "RegistrationCategory",
+            "POST": None,
+            "PUT": None
+        },
+        "category_id": {
+            "GET": "RegistrationCategoryId",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.is_active = None
-        self.category = None
-        self.category_id = None
-
-        property_mapping = dict({
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "category": {
-                "GET": "RegistrationCategory",
-                "POST": None,
-                "PUT": None
-            },
-            "category_id": {
-                "GET": "RegistrationCategoryId",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='timeregistrations/registrationcategory', primary_property='category_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='timeregistrations/registrationcategory', 
+                         primary_property='category_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

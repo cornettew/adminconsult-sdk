@@ -4,122 +4,125 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ExpenseDeclaration(Entity):
+
+    customer_id: int = None
+    date_expense = None
+    expense = None
+    expense_ccy = None
+    expense_id: int = None
+    expense_type = None
+    internal_remarks = None
+    invoicable = None
+    invoice_id: int = None
+    km_price = None
+    nr_km = None
+    period = None
+    person_id: int = None
+    project_id: int = None
+    ready_for_invoice = None
+    remarks = None
+    repayable = None
+    vat_perc = None
+
+    _property_mapping = dict({
+        "customer_id": {
+            "GET": "CustomerId",
+            "POST": None,
+            "PUT": None
+        },
+        "date_expense": {
+            "GET": "DateExpense",
+            "POST": "DateExpense",
+            "PUT": "DateExpense"
+        },
+        "expense": {
+            "GET": "Expense",
+            "POST": "Expense",
+            "PUT": "Expense"
+        },
+        "expense_ccy": {
+            "GET": "ExpenseCcy",
+            "POST": None,
+            "PUT": None
+        },
+        "expense_id": {
+            "GET": "ExpenseId",
+            "POST": None,
+            "PUT": "ExpenseId"
+        },
+        "expense_type": {
+            "GET": "ExpenseType",
+            "POST": "ExpenseType",
+            "PUT": "ExpenseType"
+        },
+        "internal_remarks": {
+            "GET": "InternalRemarks",
+            "POST": "InternalRemarks",
+            "PUT": "InternalRemarks"
+        },
+        "invoicable": {
+            "GET": "Invoicable",
+            "POST": "Invoicable",
+            "PUT": "Invoicable"
+        },
+        "invoice_id": {
+            "GET": "InvoiceId",
+            "POST": None,
+            "PUT": None
+        },
+        "km_price": {
+            "GET": "KmPrice",
+            "POST": None,
+            "PUT": None
+        },
+        "nr_km": {
+            "GET": "NrKm",
+            "POST": "NrKm",
+            "PUT": "NrKm"
+        },
+        "period": {
+            "GET": "Period",
+            "POST": "Period",
+            "PUT": "Period"
+        },
+        "person_id": {
+            "GET": "PersonId",
+            "POST": "PersonId",
+            "PUT": "PersonId"
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": "ProjectId",
+            "PUT": "ProjectId"
+        },
+        "ready_for_invoice": {
+            "GET": "ReadyForInvoice",
+            "POST": "ReadyForInvoice",
+            "PUT": "ReadyForInvoice"
+        },
+        "remarks": {
+            "GET": "Remarks",
+            "POST": "Remarks",
+            "PUT": "Remarks"
+        },
+        "repayable": {
+            "GET": "Repayable",
+            "POST": "None",
+            "PUT": "Repayable"
+        },
+        "vat_perc": {
+            "GET": "VatPerc",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.customer_id = None
-        self.date_expense = None
-        self.expense = None
-        self.expense_ccy = None
-        self.expense_id = None
-        self.expense_type = None
-        self.internal_remarks = None
-        self.invoicable = None
-        self.invoice_id = None
-        self.km_price = None
-        self.nr_km = None
-        self.period = None
-        self.person_id = None
-        self.project_id = None
-        self.ready_for_invoice = None
-        self.remarks = None
-        self.repayable = None
-        self.vat_perc = None
-
-        property_mapping = dict({
-            "customer_id": {
-                "GET": "CustomerId",
-                "POST": None,
-                "PUT": None
-            },
-            "date_expense": {
-                "GET": "DateExpense",
-                "POST": "DateExpense",
-                "PUT": "DateExpense"
-            },
-            "expense": {
-                "GET": "Expense",
-                "POST": "Expense",
-                "PUT": "Expense"
-            },
-            "expense_ccy": {
-                "GET": "ExpenseCcy",
-                "POST": None,
-                "PUT": None
-            },
-            "expense_id": {
-                "GET": "ExpenseId",
-                "POST": None,
-                "PUT": "ExpenseId"
-            },
-            "expense_type": {
-                "GET": "ExpenseType",
-                "POST": "ExpenseType",
-                "PUT": "ExpenseType"
-            },
-            "internal_remarks": {
-                "GET": "InternalRemarks",
-                "POST": "InternalRemarks",
-                "PUT": "InternalRemarks"
-            },
-            "invoicable": {
-                "GET": "Invoicable",
-                "POST": "Invoicable",
-                "PUT": "Invoicable"
-            },
-            "invoice_id": {
-                "GET": "InvoiceId",
-                "POST": None,
-                "PUT": None
-            },
-            "km_price": {
-                "GET": "KmPrice",
-                "POST": None,
-                "PUT": None
-            },
-            "nr_km": {
-                "GET": "NrKm",
-                "POST": "NrKm",
-                "PUT": "NrKm"
-            },
-            "period": {
-                "GET": "Period",
-                "POST": "Period",
-                "PUT": "Period"
-            },
-            "person_id": {
-                "GET": "PersonId",
-                "POST": "PersonId",
-                "PUT": "PersonId"
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": "ProjectId",
-                "PUT": "ProjectId"
-            },
-            "ready_for_invoice": {
-                "GET": "ReadyForInvoice",
-                "POST": "ReadyForInvoice",
-                "PUT": "ReadyForInvoice"
-            },
-            "remarks": {
-                "GET": "Remarks",
-                "POST": "Remarks",
-                "PUT": "Remarks"
-            },
-            "repayable": {
-                "GET": "Repayable",
-                "POST": "None",
-                "PUT": "Repayable"
-            },
-            "vat_perc": {
-                "GET": "VatPerc",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='expensedeclarations', primary_property='expense_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='expensedeclarations', 
+                         primary_property='expense_id', 
+                         payload=payload)
 
     def create(self):
         

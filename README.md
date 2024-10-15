@@ -2,7 +2,7 @@
 
 [![Syneton Hermes Consult API Version](https://img.shields.io/badge/Syneton_Hermes_Consult_API-1.2.2-blue)](http://consultapi.syneton.be:2100/doc#/)
 
-This sdk implements interaction with a [Syneton Admin Consult](https://www.syneton.be/admin-en-admin-consult) client via the API endpoints as well as via direct SQL access.
+This sdk implements interaction with a <a href="https://www.syneton.be/admin-en-admin-consult" target="_blank">Syneton Admin Consult</a> client via the API endpoints as well as via direct SQL access.
 
 ## Support
 

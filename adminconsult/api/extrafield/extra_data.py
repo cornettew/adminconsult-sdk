@@ -10,31 +10,36 @@ class ExtraData(Entity):
     The ExtraData structure contains ExtraField objects
     '''
 
+    _extra_table_id: int = None
+    # Unique identifier within an extra table is combination ['foreign_key', 'record_id']
+    # Define property getter and setter for foreign_key with a more appropriate name such as 'project_id'
+    foreign_key = int
+    record_id = None
+
+    _fields = dict({})
+    
+    _property_mapping = dict({
+        'foreign_key': {
+            'GET': 'fk',
+            'POST': None,
+            'PUT': None
+        },
+        'record_id': {
+            'GET': 'record_id',
+            'POST': None,
+            'PUT': None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, table_id, foreign_key, payload=None):
         
         self._extra_table_id = table_id
-
-        # Unique identifier within an extra table is combination ['foreign_key', 'record_id']
-        # Define property getter and setter for foreign_key with a more appropriate name such as 'project_id'
         self.foreign_key = foreign_key
-        self.record_id = None
 
-        self._fields = dict({})
-        
-        property_mapping = dict({
-            'foreign_key': {
-                'GET': 'fk',
-                'POST': None,
-                'PUT': None
-            },
-            'record_id': {
-                'GET': 'record_id',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='extradata/{}'.format(self._extra_table_id), primary_property='record_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='extradata/{}'.format(self._extra_table_id), 
+                         primary_property='record_id', 
+                         payload=payload)
 
     #IMPROV# Overriding _get_entity() because there is no /api/v1/extradata/{id} endpoint
     def _get_entity(self, record_id: int):
@@ -196,59 +201,62 @@ class ExtraDataList(EntityCollection):
 
 
 class ExtraField(Entity):
+        
+    column_id: int = None
+    field_type = None
+    foreign_key = None
+    record_id: int = None
+    table_id: int = None
+    unique_id: int = None
+    value = None
+    
+    _property_mapping = dict({
+        'column_id': {
+            'GET': 'ColumnId',
+            'POST': None,
+            'PUT': 'ColumnId'
+        },
+        'field_type': {
+            'GET': 'FieldType',
+            'POST': None,
+            'PUT': 'FieldType'
+        },
+        'foreign_key': {
+            'GET': 'FKId',
+            'POST': None,
+            'PUT': 'FKId'
+        },
+        'record_id': {
+            'GET': 'RecordId',
+            'POST': None,
+            'PUT': 'RecordId'
+        },
+        'table_id': {
+            'GET': 'TableId',
+            'POST': None,
+            'PUT': 'TableId'
+        },
+        'unique_id': {
+            'GET': 'UniqueId',
+            'POST': None,
+            'PUT': 'UniqueId'
+        },
+        'value': {
+            'GET': 'Value',
+            'POST': None,
+            'PUT': 'Value'
+        }
+    })
 
     def __init__(self, client_credentials: ClientCredentials, payload=None, record_field_data: tuple()= None) -> None:
-        
-        self.column_id = None
-        self.field_type = None
-        self.foreign_key = None
-        self.record_id = None
-        self.table_id = None
-        self.unique_id = None
-        self.value = None
-        
-        property_mapping = dict({
-            'column_id': {
-                'GET': 'ColumnId',
-                'POST': None,
-                'PUT': 'ColumnId'
-            },
-            'field_type': {
-                'GET': 'FieldType',
-                'POST': None,
-                'PUT': 'FieldType'
-            },
-            'foreign_key': {
-                'GET': 'FKId',
-                'POST': None,
-                'PUT': 'FKId'
-            },
-            'record_id': {
-                'GET': 'RecordId',
-                'POST': None,
-                'PUT': 'RecordId'
-            },
-            'table_id': {
-                'GET': 'TableId',
-                'POST': None,
-                'PUT': 'TableId'
-            },
-            'unique_id': {
-                'GET': 'UniqueId',
-                'POST': None,
-                'PUT': 'UniqueId'
-            },
-            'value': {
-                'GET': 'Value',
-                'POST': None,
-                'PUT': 'Value'
-            }
-        })
 
         if record_field_data:
             self._interpret_from_record(record_field_data[0], record_field_data[1], record_field_data[2], record_field_data[3])
 
-        super().__init__(client_credentials=client_credentials, endpoint='extrafields', primary_property='unique_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='extrafields', 
+                         primary_property='unique_id', 
+                         payload=payload)
     
     # Implement GET request to get specific field data ? '/api/v1/extrafields/{unique_id}'
     # Or only use via extradata endpoints ?

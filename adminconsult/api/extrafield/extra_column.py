@@ -5,39 +5,43 @@ from adminconsult.api.entity_collection import EntityCollection
 
 class ExtraColumn(Entity):
 
+    _extra_table_id: int = None
+    extra_column_id: int = None
+    extra_column_name = None
+    extra_column_display_type = None
+    extra_column_default_value = None
+    
+    _property_mapping = dict({
+        'extra_column_id': {
+            'GET': 'ExtraColumnId',
+            'POST': None,
+            'PUT': None
+        },
+        'extra_column_name': {
+            'GET': 'ExtraColumnName',
+            'POST': None,
+            'PUT': None
+        },
+        'extra_column_display_type': {
+            'GET': 'ExtraColumnDisplayType',
+            'POST': None,
+            'PUT': None
+        },
+        'extra_column_default_value': {
+            'GET': 'ExtraColumnDefaultValue',
+            'POST': None,
+            'PUT': None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, extra_table_id, payload=None):
         
         self._extra_table_id = extra_table_id
 
-        self.extra_column_id = None
-        self.extra_column_name = None
-        self.extra_column_display_type = None
-        self.extra_column_default_value = None
-        
-        property_mapping = dict({
-            'extra_column_id': {
-                'GET': 'ExtraColumnId',
-                'POST': None,
-                'PUT': None
-            },
-            'extra_column_name': {
-                'GET': 'ExtraColumnName',
-                'POST': None,
-                'PUT': None
-            },
-            'extra_column_display_type': {
-                'GET': 'ExtraColumnDisplayType',
-                'POST': None,
-                'PUT': None
-            },
-            'extra_column_default_value': {
-                'GET': 'ExtraColumnDefaultValue',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='extracolumns', primary_property='extra_column_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='extracolumns', 
+                         primary_property='extra_column_id', 
+                         payload=payload)
 
     #IMPROV# Overriding _get_entity() because there is no /api/v1/extracolumns/{id} endpoint
     def _get_entity(self, id):

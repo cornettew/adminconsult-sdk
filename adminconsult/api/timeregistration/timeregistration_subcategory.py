@@ -4,38 +4,41 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TimeregistrationSubcategory(Entity):
+
+    category_id: int = None
+    is_active = None
+    subcategory = None
+    subcategory_id = None
+
+    _property_mapping = dict({
+        "category_id": {
+            "GET": "CategoryId",
+            "POST": None,
+            "PUT": None
+        },
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "subcategory": {
+            "GET": "Subcategory",
+            "POST": None,
+            "PUT": None
+        },
+        "subcategory_id": {
+            "GET": "SubcategoryId",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.category_id = None
-        self.is_active = None
-        self.subcategory = None
-        self.subcategory_id = None
-
-        property_mapping = dict({
-            "category_id": {
-                "GET": "CategoryId",
-                "POST": None,
-                "PUT": None
-            },
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "subcategory": {
-                "GET": "Subcategory",
-                "POST": None,
-                "PUT": None
-            },
-            "subcategory_id": {
-                "GET": "SubcategoryId",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='timeregistrations/registrationsubcategory', primary_property='subcategory_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='timeregistrations/registrationsubcategory', 
+                         primary_property='subcategory_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

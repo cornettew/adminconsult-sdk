@@ -10,26 +10,29 @@ class List(Entity):
     client_credentials is regarded as a sessions variable and doing so avoid rereading the same list over and over again.
     '''
 
+    list_id: int = None
+    list_name: str = None
+
+    _property_mapping = dict({
+        'list_id': {
+            'GET': 'ListId',
+            'POST': None,
+            'PUT': None
+        },
+        'list_name': {
+            'GET': 'ListName',
+            'POST': None,
+            'PUT': None
+        }
+        })
+
     # Must initialize with a ListId.
     def __init__(self, client_credentials: ClientCredentials, list_id, list_name=None):
-
+        
         self.list_id = list_id
         self.list_name = list_name
 
-        property_mapping = dict({
-            'list_id': {
-                'GET': 'ListId',
-                'POST': None,
-                'PUT': None
-            },
-            'list_name': {
-                'GET': 'ListName',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='lists', primary_property='list_id', property_mapping=property_mapping)
+        super().__init__(client_credentials=client_credentials, endpoint='lists', primary_property='list_id')
 
     def set_attributes(self, payload: dict):
 
@@ -155,8 +158,8 @@ class ListItem():
     Capture the data of one list element.
     '''
 
-    list_id: int
-    item_id: int
+    list_id: int = None
+    item_id: int = None
     item_value: str
 
     ext_code: str

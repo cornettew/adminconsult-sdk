@@ -6,161 +6,160 @@ from adminconsult.api.entity_collection import EntityCollection
 from datetime import datetime, time, timedelta
 
 class Timeregistration(Entity):
+
+    benchmark = None
+    customer_id: int = None
+    customer_invoice_id: int = None
+    date_registration = None
+    _duration = None
+    ex_forfait = None
+    internal_price = None
+    internal_remarks = None
+    invoicable = None
+    invoice_id: int = None
+    overtime = None
+    period = None
+    person_id: int = None
+    prestation_id: int = None
+    project_id: int = None
+    ready_for_invoice = True
+    recalc = None
+    remarks = None
+    _time_from = None
+    _time_to = None
+    timeregistration_id: int = None
+    tr_price = None
+    tr_vat = None
+    urgent = None
+
+    _property_mapping = dict({
+        "benchmark": {
+            "GET": "Benchmark",
+            "POST": "Benchmark",
+            "PUT": "Benchmark"
+        },
+        "customer_id": {
+            "GET": "CustomerId",
+            "POST": None,
+            "PUT": None
+        },
+        "customer_invoice_id": {
+            "GET": "CustomerInvoiceId",
+            "POST": None,
+            "PUT": None
+        },
+        "date_registration": {
+            "GET": "DateRegistration",
+            "POST": "DateRegistration",
+            "PUT": "DateRegistration"
+        },
+        "duration": {
+            "GET": "Duration",
+            "POST": "Duration",
+            "PUT": "Duration"
+        },
+        "ex_forfait": {
+            "GET": "ExForfait",
+            "POST": "ExForfait",
+            "PUT": "ExForfait"
+        },
+        "internal_price": {
+            "GET": "InternalPrice",
+            "POST": "InternalPrice",
+            "PUT": "InternalPrice"
+        },
+        "internal_remarks": {
+            "GET": "InternalRemarks",
+            "POST": "InternalRemarks",
+            "PUT": "InternalRemarks"
+        },
+        "invoicable": {
+            "GET": "Invoicable",
+            "POST": "Invoicable",
+            "PUT": "Invoicable"
+        },
+        "invoice_id": {
+            "GET": "InvoiceId",
+            "POST": None,
+            "PUT": None
+        },
+        "overtime": {
+            "GET": "Overtime",
+            "POST": "Overtime",
+            "PUT": "Overtime"
+        },
+        "period": {
+            "GET": "Period",
+            "POST": "Period",
+            "PUT": "Period"
+        },
+        "person_id": {
+            "GET": "PersonId",
+            "POST": "PersonId",
+            "PUT": "PersonId"
+        },
+        "prestation_id": {
+            "GET": "PrestationId",
+            "POST": "PrestationId",
+            "PUT": "PrestationId"
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": "ProjectId",
+            "PUT": "ProjectId"
+        },
+        "ready_for_invoice": {
+            "GET": None,
+            "POST": "ReadyForInvoice",
+            "PUT": "ReadyForInvoice"
+        },
+        "recalc": {
+            "GET": "Recalc",
+            "POST": "Recalc",
+            "PUT": "Recalc"
+        },
+        "remarks": {
+            "GET": "Remarks",
+            "POST": "Remarks",
+            "PUT": "Remarks"
+        },
+        "time_from": {
+            "GET": "TimeFrom",
+            "POST": "TimeFrom",
+            "PUT": "TimeFrom"
+        },
+        "timeregistration_id": {
+            "GET": "TimeRegistrationId",
+            "POST": None,
+            "PUT": "TimeRegistrationId"
+        },
+        "time_to": {
+            "GET": "TimeTo",
+            "POST": "TimeTo",
+            "PUT": "TimeTo"
+        },
+        "tr_price": {
+            "GET": "TrPrice",
+            "POST": "TrPrice",
+            "PUT": "TrPrice"
+        },
+        "tr_vat": {
+            "GET": "TrVat",
+            "POST": "TrVat",
+            "PUT": "TrVat"
+        },
+        "urgent": {
+            "GET": "Urgent",
+            "POST": "Urgent",
+            "PUT": "Urgent"
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-
-        self.benchmark = None
-        self.customer_id = None
-        self.customer_invoice_id = None
-        self.date_registration = None
-        self._duration = None
-        self.ex_forfait = None
-        self.internal_price = None
-        self.internal_remarks = None
-        self.invoicable = None
-        self.invoice_id = None
-        self.overtime = None
-        self.period = None
-        self.person_id = None
-        self.prestation_id = None
-        self.project_id = None
-        self.ready_for_invoice = True
-        self.recalc = None
-        self.remarks = None
-        self._time_from = None
-        self._time_to = None
-        self.timeregistration_id = None
-        self.tr_price = None
-        self.tr_vat = None
-        self.urgent = None
-
-        property_mapping = dict({
-            "benchmark": {
-                "GET": "Benchmark",
-                "POST": "Benchmark",
-                "PUT": "Benchmark"
-            },
-            "customer_id": {
-                "GET": "CustomerId",
-                "POST": None,
-                "PUT": None
-            },
-            "customer_invoice_id": {
-                "GET": "CustomerInvoiceId",
-                "POST": None,
-                "PUT": None
-            },
-            "date_registration": {
-                "GET": "DateRegistration",
-                "POST": "DateRegistration",
-                "PUT": "DateRegistration"
-            },
-            "duration": {
-                "GET": "Duration",
-                "POST": "Duration",
-                "PUT": "Duration"
-            },
-            "ex_forfait": {
-                "GET": "ExForfait",
-                "POST": "ExForfait",
-                "PUT": "ExForfait"
-            },
-            "internal_price": {
-                "GET": "InternalPrice",
-                "POST": "InternalPrice",
-                "PUT": "InternalPrice"
-            },
-            "internal_remarks": {
-                "GET": "InternalRemarks",
-                "POST": "InternalRemarks",
-                "PUT": "InternalRemarks"
-            },
-            "invoicable": {
-                "GET": "Invoicable",
-                "POST": "Invoicable",
-                "PUT": "Invoicable"
-            },
-            "invoice_id": {
-                "GET": "InvoiceId",
-                "POST": None,
-                "PUT": None
-            },
-            "overtime": {
-                "GET": "Overtime",
-                "POST": "Overtime",
-                "PUT": "Overtime"
-            },
-            "period": {
-                "GET": "Period",
-                "POST": "Period",
-                "PUT": "Period"
-            },
-            "person_id": {
-                "GET": "PersonId",
-                "POST": "PersonId",
-                "PUT": "PersonId"
-            },
-            "prestation_id": {
-                "GET": "PrestationId",
-                "POST": "PrestationId",
-                "PUT": "PrestationId"
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": "ProjectId",
-                "PUT": "ProjectId"
-            },
-            "ready_for_invoice": {
-                "GET": None,
-                "POST": "ReadyForInvoice",
-                "PUT": "ReadyForInvoice"
-            },
-            "recalc": {
-                "GET": "Recalc",
-                "POST": "Recalc",
-                "PUT": "Recalc"
-            },
-            "remarks": {
-                "GET": "Remarks",
-                "POST": "Remarks",
-                "PUT": "Remarks"
-            },
-            "time_from": {
-                "GET": "TimeFrom",
-                "POST": "TimeFrom",
-                "PUT": "TimeFrom"
-            },
-            "timeregistration_id": {
-                "GET": "TimeRegistrationId",
-                "POST": None,
-                "PUT": "TimeRegistrationId"
-            },
-            "time_to": {
-                "GET": "TimeTo",
-                "POST": "TimeTo",
-                "PUT": "TimeTo"
-            },
-            "tr_price": {
-                "GET": "TrPrice",
-                "POST": "TrPrice",
-                "PUT": "TrPrice"
-            },
-            "tr_vat": {
-                "GET": "TrVat",
-                "POST": "TrVat",
-                "PUT": "TrVat"
-            },
-            "urgent": {
-                "GET": "Urgent",
-                "POST": "Urgent",
-                "PUT": "Urgent"
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='timeregistrations', 
                          primary_property='timeregistration_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          datetime_properties=['date_registration'])
 

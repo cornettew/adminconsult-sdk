@@ -5,88 +5,87 @@ from adminconsult.api.entity_collection import EntityCollection
 
 class ProjectContact(Entity):
 
-    def __init__(self, client_credentials: ClientCredentials, payload=None):
+    contact = None
+    contact_email = None
+    contact_id: int = None
+    contact_language = None
+    contact_mobile = None
+    contact_phone = None
+    contact_title = None
+    is_active = None
+    is_invoice_contact = None
+    project_contact_id: int = None
+    project_id: int = None
+    receives_newsletter = None
+    
+    _property_mapping = dict({
+        "contact": {
+            "GET": "Contact",
+            "POST": None,
+            "PUT": None
+        },
+        "contact_email": {
+            "GET": "ContactEmail",
+            "POST": None,
+            "PUT": None
+        },
+        "contact_id": {
+            "GET": "ContactId",
+            "POST": "ContactId",
+            "PUT": None
+        },
+        "contact_language": {
+            "GET": "ContactLanguage",
+            "POST": None,
+            "PUT": None
+        },
+        "contact_mobile": {
+            "GET": "ContactMobile",
+            "POST": None,
+            "PUT": None
+        },
+        "contact_phone": {
+            "GET": "ContactPhone",
+            "POST": None,
+            "PUT": None
+        },
+        "contact_title": {
+            "GET": "ContactTitle",
+            "POST": None,
+            "PUT": None
+        },
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "is_invoice_contact": {
+            "GET": "IsInvoiceContact",
+            "POST": "IsInvoiceContact",
+            "PUT": None
+        },
+        "project_contact_id": {
+            "GET": "ProjectContactId",
+            "POST": None,
+            "PUT": None
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": "ProjectId",
+            "PUT": None
+        },
+        "receives_newsletter": {
+            "GET": "ReceivesNewsletter",
+            "POST": None,
+            "PUT": None
+        }
+    })
 
-        self.contact = None
-        self.contact_email = None
-        self.contact_id = None
-        self.contact_language = None
-        self.contact_mobile = None
-        self.contact_phone = None
-        self.contact_title = None
-        self.is_active = None
-        self.is_invoice_contact = None
-        self.project_contact_id = None
-        self.project_id = None
-        self.receives_newsletter = None
-        
-        property_mapping = dict({
-            "contact": {
-                "GET": "Contact",
-                "POST": None,
-                "PUT": None
-            },
-            "contact_email": {
-                "GET": "ContactEmail",
-                "POST": None,
-                "PUT": None
-            },
-            "contact_id": {
-                "GET": "ContactId",
-                "POST": "ContactId",
-                "PUT": None
-            },
-            "contact_language": {
-                "GET": "ContactLanguage",
-                "POST": None,
-                "PUT": None
-            },
-            "contact_mobile": {
-                "GET": "ContactMobile",
-                "POST": None,
-                "PUT": None
-            },
-            "contact_phone": {
-                "GET": "ContactPhone",
-                "POST": None,
-                "PUT": None
-            },
-            "contact_title": {
-                "GET": "ContactTitle",
-                "POST": None,
-                "PUT": None
-            },
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "is_invoice_contact": {
-                "GET": "IsInvoiceContact",
-                "POST": "IsInvoiceContact",
-                "PUT": None
-            },
-            "project_contact_id": {
-                "GET": "ProjectContactId",
-                "POST": None,
-                "PUT": None
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": "ProjectId",
-                "PUT": None
-            },
-            "receives_newsletter": {
-                "GET": "ReceivesNewsletter",
-                "POST": None,
-                "PUT": None
-            }
-        })
+    def __init__(self, client_credentials: ClientCredentials, payload=None):
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='projectcontacts', 
                          primary_property='project_contact_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          endpoint_parent='projects',
                          parent_id_property='project_id',

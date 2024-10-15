@@ -6,122 +6,121 @@ from adminconsult.api.entity_collection import EntityCollection
 from adminconsult.api.lists import Countries
 
 class CustomerAddress(Entity):
+        
+    address_id: int = None
+    city = None
+    _country_code = None
+    _country_id: int = None
+    _country_name = None
+    customer_address_id: int = None
+    customer_id: int = None
+    exploitation_address = None
+    house_box = None
+    house_nr = None
+    invoice_address = None
+    postal_address = None
+    registered_office = None
+    street_1 = None
+    street_2 = None
+    street_name = None
+    zip_code = None
+
+    _property_mapping = dict({
+        'address_id': {
+            'GET': 'AddressId',
+            'POST': None,
+            'PUT': None
+        },
+        'city': {
+            'GET': 'City',
+            'POST': 'City',
+            'PUT': 'City'
+        },
+        'country_code': {
+            'GET': 'CountryCode',
+            'POST': None,
+            'PUT': None
+        },
+        'country_id': {
+            'GET': 'CountryId',
+            'POST': 'CountryId',
+            'PUT': 'CountryId'
+        },
+        'country_name': {
+            'GET': None,
+            'POST': None,
+            'PUT': None
+        },
+        'customer_address_id': {
+            'GET': 'CustomerAddressId',
+            'POST': None,
+            'PUT': None
+        },
+        'customer_id': {
+            'GET': 'CustomerId',
+            'POST': None,
+            'PUT': None
+        },
+        'exploitation_address': {
+            'GET': 'ExploitationAddress',
+            'POST': 'ExploitationAddress',
+            'PUT': 'ExploitationAddress'
+        },
+        'house_box': {
+            'GET': 'HouseBox',
+            'POST': 'HouseBox',
+            'PUT': 'HouseBox'
+        },
+        'house_nr': {
+            'GET': 'HouseNr',
+            'POST': 'HouseNr',
+            'PUT': 'HouseNr'
+        },
+        'invoice_address': {
+            'GET': 'InvoiceAddress',
+            'POST': 'InvoiceAddress',
+            'PUT': 'InvoiceAddress'
+        },
+        'postal_address': {
+            'GET': 'PostalAddress',
+            'POST': 'PostalAddress',
+            'PUT': 'PostalAddress'
+        },
+        'registered_office': {
+            'GET': 'RegisteredOffice',
+            'POST': 'RegisteredOffice',
+            'PUT': 'RegisteredOffice'
+        },
+        'street_1': {
+            # Invert with streetname which doesn't contain housenr./box
+            'GET': 'StreetName',
+            'POST': 'Street1',
+            'PUT': 'Street1'
+        },
+        'street_2': {
+            'GET': 'Street2',
+            'POST': 'Street2',
+            'PUT': 'Street2'
+        },
+        'street_name': {
+            # Invert with street_1 which contains housenr./box
+            'GET': 'Street1',
+            # Technically allowed to post but blocked to not confuse with expanded fiels street1, street2, housenr., ...
+            'POST': None,
+            'PUT': None
+        },
+        'zip_code': {
+            'GET': 'ZipCode',
+            'POST': 'ZipCode',
+            'PUT': 'ZipCode'
+        }
+    })
 
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-        
-        self.address_id = None
-        self.city = None
-        self._country_code = None
-        self._country_id = None
-        self._country_name = None
-        self.customer_address_id = None
-        self.customer_id = None
-        self.exploitation_address = None
-        self.house_box = None
-        self.house_nr = None
-        self.invoice_address = None
-        self.postal_address = None
-        self.registered_office = None
-        self.street_1 = None
-        self.street_2 = None
-        self.street_name = None
-        self.zip_code = None
-
-        property_mapping = dict({
-            'address_id': {
-                'GET': 'AddressId',
-                'POST': None,
-                'PUT': None
-            },
-            'city': {
-                'GET': 'City',
-                'POST': 'City',
-                'PUT': 'City'
-            },
-            'country_code': {
-                'GET': 'CountryCode',
-                'POST': None,
-                'PUT': None
-            },
-            'country_id': {
-                'GET': 'CountryId',
-                'POST': 'CountryId',
-                'PUT': 'CountryId'
-            },
-            'country_name': {
-                'GET': None,
-                'POST': None,
-                'PUT': None
-            },
-            'customer_address_id': {
-                'GET': 'CustomerAddressId',
-                'POST': None,
-                'PUT': None
-            },
-            'customer_id': {
-                'GET': 'CustomerId',
-                'POST': None,
-                'PUT': None
-            },
-            'exploitation_address': {
-                'GET': 'ExploitationAddress',
-                'POST': 'ExploitationAddress',
-                'PUT': 'ExploitationAddress'
-            },
-            'house_box': {
-                'GET': 'HouseBox',
-                'POST': 'HouseBox',
-                'PUT': 'HouseBox'
-            },
-            'house_nr': {
-                'GET': 'HouseNr',
-                'POST': 'HouseNr',
-                'PUT': 'HouseNr'
-            },
-            'invoice_address': {
-                'GET': 'InvoiceAddress',
-                'POST': 'InvoiceAddress',
-                'PUT': 'InvoiceAddress'
-            },
-            'postal_address': {
-                'GET': 'PostalAddress',
-                'POST': 'PostalAddress',
-                'PUT': 'PostalAddress'
-            },
-            'registered_office': {
-                'GET': 'RegisteredOffice',
-                'POST': 'RegisteredOffice',
-                'PUT': 'RegisteredOffice'
-            },
-            'street_1': {
-                # Invert with streetname which doesn't contain housenr./box
-                'GET': 'StreetName',
-                'POST': 'Street1',
-                'PUT': 'Street1'
-            },
-            'street_2': {
-                'GET': 'Street2',
-                'POST': 'Street2',
-                'PUT': 'Street2'
-            },
-            'street_name': {
-                # Invert with street_1 which contains housenr./box
-                'GET': 'Street1',
-                # Technically allowed to post but blocked to not confuse with expanded fiels street1, street2, housenr., ...
-                'POST': None,
-                'PUT': None
-            },
-            'zip_code': {
-                'GET': 'ZipCode',
-                'POST': 'ZipCode',
-                'PUT': 'ZipCode'
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='customeraddresses', 
                          primary_property='customer_address_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          endpoint_parent='customers',
                          parent_id_property='customer_id',

@@ -4,32 +4,35 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ExtraTable(Entity):
+        
+    extra_table_id: int = None
+    extra_table_name = None
+    extra_table_relation = None
+    
+    _property_mapping = dict({
+        'extra_table_id': {
+            'GET': 'ExtraTableId',
+            'POST': None,
+            'PUT': None
+        },
+        'extra_table_name': {
+            'GET': 'ExtraTableName',
+            'POST': None,
+            'PUT': None
+        },
+        'extra_table_relation': {
+            'GET': 'ExtraTableRelation',
+            'POST': None,
+            'PUT': None
+        }
+    })
 
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-        
-        self.extra_table_id = None
-        self.extra_table_name = None
-        self.extra_table_relation = None
-        
-        property_mapping = dict({
-            'extra_table_id': {
-                'GET': 'ExtraTableId',
-                'POST': None,
-                'PUT': None
-            },
-            'extra_table_name': {
-                'GET': 'ExtraTableName',
-                'POST': None,
-                'PUT': None
-            },
-            'extra_table_relation': {
-                'GET': 'ExtraTableRelation',
-                'POST': None,
-                'PUT': None
-            }
-        })
 
-        super().__init__(client_credentials=client_credentials, endpoint='extratables', primary_property='extra_table_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='extratables', 
+                         primary_property='extra_table_id', 
+                         payload=payload)
 
     #IMPROV# Overriding _get_entity() because there is no /api/v1/extratables/{id} endpoint
     def _get_entity(self, id):

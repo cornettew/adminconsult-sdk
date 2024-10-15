@@ -4,32 +4,35 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class TaskFlow(Entity):
+
+    task_id: int = None
+    task_name = None
+    task_active = None
+
+    _property_mapping = dict({
+        'task_id': {
+            'GET': 'TaskId',
+            'POST': None,
+            'PUT': None
+        },
+        'task_name': {
+            'GET': 'TaskName',
+            'POST': None,
+            'PUT': None
+        },
+        'task_active': {
+            'GET': 'TaskActive',
+            'POST': None,
+            'PUT': None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.task_id = None
-        self.task_name = None
-        self.task_active = None
-
-        property_mapping = dict({
-            'task_id': {
-                'GET': 'TaskId',
-                'POST': None,
-                'PUT': None
-            },
-            'task_name': {
-                'GET': 'TaskName',
-                'POST': None,
-                'PUT': None
-            },
-            'task_active': {
-                'GET': 'TaskActive',
-                'POST': None,
-                'PUT': None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='taskflow/tasks', primary_property='task_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='taskflow/tasks', 
+                         primary_property='task_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

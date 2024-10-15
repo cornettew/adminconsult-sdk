@@ -4,95 +4,94 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ProjectRecurringExpense(Entity):
+        
+    amount = None
+    expense_id: int = None
+    invoice_text = None
+    last_creation_date = None
+    person_id: int = None
+    planning_stop = None
+    project_id: int = None
+    project_recurring_expense_id: int = None
+    schedule_abbr_nr = None
+    schedule_abbr_unit = None
+    schedule_date = None
+    text_id: int = None
+    text_type = None
+
+    _property_mapping = dict({
+        "amount": {
+            "GET": "Amount",
+            "POST": "Amount",
+            "PUT": "Amount"
+        },
+        "expense_id": {
+            "GET": "ExpenseId",
+            "POST": "ExpenseId",
+            "PUT": "ExpenseId"
+        },
+        "invoice_text": {
+            "GET": "InvoiceText",
+            "POST": "InvoiceText",
+            "PUT": "InvoiceText"
+        },
+        "last_creation_date": {
+            "GET": "LastCreationDate",
+            "POST": None,
+            "PUT": None
+        },
+        "person_id": {
+            "GET": "PersonId",
+            "POST": "PersonId",
+            "PUT": "PersonId"
+        },
+        "planning_stop": {
+            "GET": "PlanningStop",
+            "POST": "PlanningStop",
+            "PUT": "PlanningStop"
+        },
+        "project_id": {
+            "GET": "ProjectId",
+            "POST": "ProjectId",
+            "PUT": None
+        },
+        "project_recurring_expense_id": {
+            "GET": "ProjectRecurringExpenseId",
+            "POST": None,
+            "PUT": "ProjectRecurringExpenseId"
+        },
+        "schedule_abbr_nr": {
+            "GET": "ScheduleAbbrNr",
+            "POST": "ScheduleAbbrNr",
+            "PUT": "ScheduleAbbrNr"
+        },
+        "schedule_abbr_unit": {
+            "GET": "ScheduleAbbrUnit",
+            "POST": "ScheduleAbbrUnit",
+            "PUT": "ScheduleAbbrUnit"
+        },
+        "schedule_date": {
+            "GET": "ScheduleDate",
+            "POST": "ScheduleDate",
+            "PUT": "ScheduleDate"
+        },
+        "text_id": {
+            "GET": "TextId",
+            "POST": "TextId",
+            "PUT": "TextId"
+        },
+        "text_type": {
+            "GET": "TextType",
+            "POST": "TextType",
+            "PUT": "TextType"
+        }
+    })
 
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-        
-        self.amount = None
-        self.expense_id = None
-        self.invoice_text = None
-        self.last_creation_date = None
-        self.person_id = None
-        self.planning_stop = None
-        self.project_id = None
-        self.project_recurring_expense_id = None
-        self.schedule_abbr_nr = None
-        self.schedule_abbr_unit = None
-        self.schedule_date = None
-        self.text_id = None
-        self.text_type = None
-
-        property_mapping = dict({
-            "amount": {
-                "GET": "Amount",
-                "POST": "Amount",
-                "PUT": "Amount"
-            },
-            "expense_id": {
-                "GET": "ExpenseId",
-                "POST": "ExpenseId",
-                "PUT": "ExpenseId"
-            },
-            "invoice_text": {
-                "GET": "InvoiceText",
-                "POST": "InvoiceText",
-                "PUT": "InvoiceText"
-            },
-            "last_creation_date": {
-                "GET": "LastCreationDate",
-                "POST": None,
-                "PUT": None
-            },
-            "person_id": {
-                "GET": "PersonId",
-                "POST": "PersonId",
-                "PUT": "PersonId"
-            },
-            "planning_stop": {
-                "GET": "PlanningStop",
-                "POST": "PlanningStop",
-                "PUT": "PlanningStop"
-            },
-            "project_id": {
-                "GET": "ProjectId",
-                "POST": "ProjectId",
-                "PUT": None
-            },
-            "project_recurring_expense_id": {
-                "GET": "ProjectRecurringExpenseId",
-                "POST": None,
-                "PUT": "ProjectRecurringExpenseId"
-            },
-            "schedule_abbr_nr": {
-                "GET": "ScheduleAbbrNr",
-                "POST": "ScheduleAbbrNr",
-                "PUT": "ScheduleAbbrNr"
-            },
-            "schedule_abbr_unit": {
-                "GET": "ScheduleAbbrUnit",
-                "POST": "ScheduleAbbrUnit",
-                "PUT": "ScheduleAbbrUnit"
-            },
-            "schedule_date": {
-                "GET": "ScheduleDate",
-                "POST": "ScheduleDate",
-                "PUT": "ScheduleDate"
-            },
-            "text_id": {
-                "GET": "TextId",
-                "POST": "TextId",
-                "PUT": "TextId"
-            },
-            "text_type": {
-                "GET": "TextType",
-                "POST": "TextType",
-                "PUT": "TextType"
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='projectrecurringexpenses', 
                          primary_property='project_recurring_expense_id', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          endpoint_parent='projects',
                          parent_id_property='project_id',

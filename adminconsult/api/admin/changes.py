@@ -7,82 +7,81 @@ import warnings
 
 class Change(Entity):
 
+    action_type = None
+    column_name = None
+    date_action = None
+    db_user = None
+    display_name = None
+    log_id: int = None
+    new_value = None
+    old_value = None
+    person_name = None
+    row_identification = None
+    table_name = None
+
+    _property_mapping = dict({
+        'action_type': {
+            'GET': 'ActionType',
+            'POST': None,
+            'PUT': None
+        },
+        'column_name': {
+            'GET': 'ColumnName',
+            'POST': None,
+            'PUT': None
+        },
+        'date_action': {
+            'GET': 'DateAction',
+            'POST': None,
+            'PUT': None
+        },
+        'db_user': {
+            'GET': 'Dbuser',
+            'POST': None,
+            'PUT': None
+        },
+        'display_name': {
+            'GET': 'DisplayName',
+            'POST': None,
+            'PUT': None
+        },
+        'log_id': {
+            'GET': 'LogId',
+            'POST': None,
+            'PUT': None
+        },
+        'new_value': {
+            'GET': 'NewValue',
+            'POST': None,
+            'PUT': None
+        },
+        'old_value': {
+            'GET': 'OldValue',
+            'POST': None,
+            'PUT': None
+        },
+        'person_name': {
+            'GET': 'PersonName',
+            'POST': None,
+            'PUT': None
+        },
+        'row_identification': {
+            'GET': 'RowIdentification',
+            'POST': None,
+            'PUT': None
+        },
+        'table_name': {
+            'GET': 'TableName',
+            'POST': None,
+            'PUT': None
+        }
+    })
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
-
-        self.action_type = None
-        self.column_name = None
-        self.date_action = None
-        self.db_user = None
-        self.display_name = None
-        self.log_id = None
-        self.new_value = None
-        self.old_value = None
-        self.person_name = None
-        self.row_identification = None
-        self.table_name = None
-
-        property_mapping = dict({
-            'action_type': {
-                'GET': 'ActionType',
-                'POST': None,
-                'PUT': None
-            },
-            'column_name': {
-                'GET': 'ColumnName',
-                'POST': None,
-                'PUT': None
-            },
-            'date_action': {
-                'GET': 'DateAction',
-                'POST': None,
-                'PUT': None
-            },
-            'db_user': {
-                'GET': 'Dbuser',
-                'POST': None,
-                'PUT': None
-            },
-            'display_name': {
-                'GET': 'DisplayName',
-                'POST': None,
-                'PUT': None
-            },
-            'log_id': {
-                'GET': 'LogId',
-                'POST': None,
-                'PUT': None
-            },
-            'new_value': {
-                'GET': 'NewValue',
-                'POST': None,
-                'PUT': None
-            },
-            'old_value': {
-                'GET': 'OldValue',
-                'POST': None,
-                'PUT': None
-            },
-            'person_name': {
-                'GET': 'PersonName',
-                'POST': None,
-                'PUT': None
-            },
-            'row_identification': {
-                'GET': 'RowIdentification',
-                'POST': None,
-                'PUT': None
-            },
-            'table_name': {
-                'GET': 'TableName',
-                'POST': None,
-                'PUT': None
-            }
-        })
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='changedetails', 
                          primary_property='log_id', 
-                         property_mapping=property_mapping, 
                          datetime_properties=['date_action'],
                          payload=payload)
         

@@ -4,68 +4,71 @@ from adminconsult.api.entity import Entity
 from adminconsult.api.entity_collection import EntityCollection
 
 class ProductItem(Entity):
+
+    account_nr = None
+    invoicable = None
+    is_active = None
+    order_nr = None
+    price = None
+    product = None
+    product_category_id: int = None
+    product_id: int = None
+    purchase_price = None
+
+    _property_mapping = dict({
+        "account_nr": {
+            "GET": "AccountNr",
+            "POST": None,
+            "PUT": None
+        },
+        "invoicable": {
+            "GET": "Invoicable",
+            "POST": None,
+            "PUT": None
+        },
+        "is_active": {
+            "GET": "IsActive",
+            "POST": None,
+            "PUT": None
+        },
+        "order_nr": {
+            "GET": "OrderNr",
+            "POST": None,
+            "PUT": None
+        },
+        "price": {
+            "GET": "Price",
+            "POST": None,
+            "PUT": None
+        },
+        "product": {
+            "GET": "Product",
+            "POST": None,
+            "PUT": None
+        },
+        "product_category_id": {
+            "GET": "ProductCategoryId",
+            "POST": None,
+            "PUT": None
+        },
+        "product_id": {
+            "GET": "ProductId",
+            "POST": None,
+            "PUT": None
+        },
+        "purchase_price": {
+            "GET": "PurchasePrice",
+            "POST": None,
+            "PUT": None
+        }
+    })
     
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        self.account_nr = None
-        self.invoicable = None
-        self.is_active = None
-        self.order_nr = None
-        self.price = None
-        self.product = None
-        self.product_category_id = None
-        self.product_id = None
-        self.purchase_price = None
-
-        property_mapping = dict({
-            "account_nr": {
-                "GET": "AccountNr",
-                "POST": None,
-                "PUT": None
-            },
-            "invoicable": {
-                "GET": "Invoicable",
-                "POST": None,
-                "PUT": None
-            },
-            "is_active": {
-                "GET": "IsActive",
-                "POST": None,
-                "PUT": None
-            },
-            "order_nr": {
-                "GET": "OrderNr",
-                "POST": None,
-                "PUT": None
-            },
-            "price": {
-                "GET": "Price",
-                "POST": None,
-                "PUT": None
-            },
-            "product": {
-                "GET": "Product",
-                "POST": None,
-                "PUT": None
-            },
-            "product_category_id": {
-                "GET": "ProductCategoryId",
-                "POST": None,
-                "PUT": None
-            },
-            "product_id": {
-                "GET": "ProductId",
-                "POST": None,
-                "PUT": None
-            },
-            "purchase_price": {
-                "GET": "PurchasePrice",
-                "POST": None,
-                "PUT": None
-            }
-        })
-
-        super().__init__(client_credentials=client_credentials, endpoint='productuses/productitem', primary_property='product_id', property_mapping=property_mapping, payload=payload)
+        super().__init__(client_credentials=client_credentials, 
+                         endpoint='productuses/productitem', 
+                         primary_property='product_id', 
+                         payload=payload)
 
 
     def _get_entity(self, id: int):

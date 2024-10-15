@@ -5,64 +5,63 @@ from adminconsult.api.entity_collection import EntityCollection
 
 class ProjectEmployee(Entity):
 
-    def __init__(self, client_credentials: ClientCredentials, payload=None):
+    project_employee_pk = None
+    project_id: int = None
+    employee_profile = None
+    employee = None
+    employee_profile_id: int = None
+    employee_id: int = None
+    is_taskflow_employee = None
+    is_active = None
+    
+    _property_mapping = dict({
+        'project_employee_pk': {
+            'GET': 'ProjectEmployeePk',
+            'POST': None,
+            'PUT': 'ProjectEmployeePk'
+        },
+        'project_id': {
+            'GET': 'ProjectId',
+            'POST': None,
+            'PUT': None
+        },
+        'employee_profile': {
+            'GET': 'EmployeeProfile',
+            'POST': None,
+            'PUT': None
+        },
+        'employee': {
+            'GET': 'Employee',
+            'POST': None,
+            'PUT': None
+        },
+        'employee_profile_id': {
+            'GET': 'EmployeeProfileId',
+            'POST': 'EmployeeProfileId',
+            'PUT': 'EmployeeProfileId'
+        },
+        'employee_id': {
+            'GET': 'EmployeeId',
+            'POST': 'EmployeeId',
+            'PUT': 'EmployeeId'
+        },
+        'is_taskflow_employee': {
+            'GET': 'IsTaskflowEmployee',
+            'POST': 'IsTaskflowEmployee',
+            'PUT': 'IsTaskflowEmployee'
+        },
+        'is_active': {
+            'GET': 'IsActive',
+            'POST': 'IsActive',
+            'PUT': 'IsActive'
+        }
+    })
 
-        self.project_employee_pk = None
-        self.project_id = None
-        self.employee_profile = None
-        self.employee = None
-        self.employee_profile_id = None
-        self.employee_id = None
-        self.is_taskflow_employee = None
-        self.is_active = None
-        
-        property_mapping = dict({
-            'project_employee_pk': {
-                'GET': 'ProjectEmployeePk',
-                'POST': None,
-                'PUT': 'ProjectEmployeePk'
-            },
-            'project_id': {
-                'GET': 'ProjectId',
-                'POST': None,
-                'PUT': None
-            },
-            'employee_profile': {
-                'GET': 'EmployeeProfile',
-                'POST': None,
-                'PUT': None
-            },
-            'employee': {
-                'GET': 'Employee',
-                'POST': None,
-                'PUT': None
-            },
-            'employee_profile_id': {
-                'GET': 'EmployeeProfileId',
-                'POST': 'EmployeeProfileId',
-                'PUT': 'EmployeeProfileId'
-            },
-            'employee_id': {
-                'GET': 'EmployeeId',
-                'POST': 'EmployeeId',
-                'PUT': 'EmployeeId'
-            },
-            'is_taskflow_employee': {
-                'GET': 'IsTaskflowEmployee',
-                'POST': 'IsTaskflowEmployee',
-                'PUT': 'IsTaskflowEmployee'
-            },
-            'is_active': {
-                'GET': 'IsActive',
-                'POST': 'IsActive',
-                'PUT': 'IsActive'
-            }
-        })
+    def __init__(self, client_credentials: ClientCredentials, payload=None):
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='projectemployees', 
                          primary_property='project_employee_pk', 
-                         property_mapping=property_mapping, 
                          payload=payload,
                          endpoint_parent='projects',
                          parent_id_property='project_id',
