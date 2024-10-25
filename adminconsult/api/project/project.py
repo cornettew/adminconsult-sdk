@@ -252,7 +252,6 @@ class Project(Entity):
             # ReasonForLeaving
         })
 
-        print('{}/{}/deactivate'.format(self._endpoint, self.project_id))
         self._execute_request(method='post', endpoint='{}/{}/deactivate'.format(self._endpoint, self.project_id), payload=payload)
     
     def delete(self):
