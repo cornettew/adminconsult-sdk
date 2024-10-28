@@ -10,7 +10,7 @@ taskflow_planning = TaskFlowPlanned(admin_cred)
 taskflow_planning.project_id = 49809
 taskflow_planning.task_id = 377
 taskflow_planning.schedule_id = 0
-taskflow_planning.recurring_deviation_unit = 'a'
+taskflow_planning.recurring_deviation_unit = 'y'
 taskflow_planning.recurring_deviation_nr = 1
 taskflow_planning.one_time_date = datetime(2024, 10, 5)
 
