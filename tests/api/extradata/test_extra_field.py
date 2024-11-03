@@ -19,8 +19,8 @@ def test_get_extra_data(client_credentials: ClientCredentials):
             assert type(extra_data[0]) == ExtraData
 
             if len(extra_data[0]._fields) > 0:
-                assert type(list(extra_data[0]._fields.values())[0]) == ExtraField
-                assert type(list(extra_data[0]._fields.values())[0]._label) == str
+                assert isinstance(list(extra_data[0]._fields.values())[0], ExtraField)
+                assert isinstance(list(extra_data[0]._fields.values())[0]._label, str)
         else:
             # No extra data found in first extra_table found. Assume the system is empty.
             assert client_credentials.calls_throttling_count > 0
