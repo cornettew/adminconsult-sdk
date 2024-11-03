@@ -115,7 +115,7 @@ class Base(ABC):
             raise PermissionError('Erreur d\'autorisation (Admin):  {}.'.format(endpoint))
         elif response.status_code == 414:
             raise Exception('URI too long')
-        elif type(response.json()) == list and response.json()[0]['ErrorMessage']:
+        elif isinstance(response.json(), list) and response.json()[0]['ErrorMessage']:
             error_messages = ""
             for i in response.json():
                 if i != response.json()[-1]:

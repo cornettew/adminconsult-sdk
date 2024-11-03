@@ -100,6 +100,10 @@ class ClientCredentials(ABC):
 
     @property
     def calls_throttling_count(self):
+
+        # Remove timestamps which are not within the last minute
+        self._calls_throttling_count = [x for x in self._calls_throttling_count if x > (datetime.now() - timedelta(seconds = 63))]
+
         return len(self._calls_throttling_count)
 
     @calls_throttling_count.setter

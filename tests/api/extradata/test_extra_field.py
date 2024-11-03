@@ -16,7 +16,7 @@ def test_get_extra_data(client_credentials: ClientCredentials):
         extra_data.get()
 
         if extra_data.count > 0:
-            assert type(extra_data[0]) == ExtraData
+            assert isinstance(extra_data[0], ExtraData)
 
             if len(extra_data[0]._fields) > 0:
                 assert isinstance(list(extra_data[0]._fields.values())[0], ExtraField)
@@ -42,7 +42,7 @@ def test_post_extra_field(client_credentials: ClientCredentials):
         extra_data.get()
 
         if extra_data.count > 0:
-            assert type(extra_data[0]) == ExtraData
+            assert isinstance(extra_data[0], ExtraData)
 
             if len(extra_data[0]._fields) > 0:
                 # Update field value with same value
