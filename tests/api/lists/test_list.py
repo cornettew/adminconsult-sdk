@@ -13,7 +13,7 @@ def test_get_lists(client_credentials: ClientCredentials):
 
     admin_lists.get()
 
-    assert type(admin_lists[0]) == List
+    assert isinstance(admin_lists[0], List)
     
 
 def test_get_listitems(client_credentials: ClientCredentials):
@@ -26,7 +26,7 @@ def test_get_listitems(client_credentials: ClientCredentials):
     admin_list.get()
 
     # Test if list items are stored in session variable (client_credentials)
-    assert type(list(client_credentials._lists.values())[0][0]) == ListItem
+    assert isinstance(list(client_credentials._lists.values())[0][0], ListItem)
     
 
 def test_get_listitem_id(client_credentials: ClientCredentials):
@@ -41,4 +41,5 @@ def test_get_listitem_id(client_credentials: ClientCredentials):
     admin_list.get()
 
     # Get key for the first item in that list based on its value
-    assert type(admin_list.get_item_id(item_value=list(client_credentials._lists.values())[0][0].item_value)) == int
+    assert isinstance(admin_list.get_item_id(item_value=list(client_credentials._lists.values())[0][0].item_value), int)
+    
