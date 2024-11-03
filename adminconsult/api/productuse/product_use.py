@@ -133,7 +133,11 @@ class ProductUse(Entity):
 
 class ProductUseList(EntityCollection):
 
+    _collection: list[ProductUse]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='productuses', on_max=on_max, payload=payload)
     

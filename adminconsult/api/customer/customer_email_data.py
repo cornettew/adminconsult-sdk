@@ -110,9 +110,12 @@ class CustomerEmailData(Entity):
 
 class CustomerEmailDataList(EntityCollection):
 
+    _collection: list[CustomerEmailData]
+
     def __init__(self, client_credentials: ClientCredentials, customer_id, on_max='ignore', payload=None):
 
         self._customer_id = customer_id
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='customers/{}/emaildata'.format(self._customer_id), on_max=on_max, payload=payload)
     

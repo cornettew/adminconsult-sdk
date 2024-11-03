@@ -153,10 +153,11 @@ class ExtraData(Entity):
 
 class ExtraDataList(EntityCollection):
 
+    _collection: list[ExtraData]
+
     def __init__(self, client_credentials: ClientCredentials, table_id, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [ExtraData]
+        self._collection = []
         
         self._extra_table_id = table_id
 

@@ -103,9 +103,12 @@ class TaskFlowSubtask(Entity):
 
 class TaskFlowSubtaskList(EntityCollection):
 
+    _collection: list[TaskFlowSubtask]
+
     def __init__(self, client_credentials: ClientCredentials, task_id: int, on_max='ignore', payload=None):
 
         self._task_id = task_id
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='taskflow/tasks/{}/subtasks'.format(task_id), on_max=on_max, payload=payload)
     

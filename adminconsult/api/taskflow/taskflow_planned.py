@@ -121,7 +121,11 @@ class TaskFlowPlanned(Entity):
 
 class TaskFlowPlannedList(EntityCollection):
 
+    _collection: list[TaskFlowPlanned]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='taskflow/tasks/plannedtasks', on_max=on_max, payload=payload)
     

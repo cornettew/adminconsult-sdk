@@ -65,10 +65,11 @@ class ExtraColumn(Entity):
     
 class ExtraColumnList(EntityCollection):
 
+    _collection: list[ExtraColumn]
+
     def __init__(self, client_credentials: ClientCredentials, extra_table_id, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [ExtraColumn]
+        self._collection = []
 
         self._extra_table_id = extra_table_id
 

@@ -260,10 +260,11 @@ class Project(Entity):
 
 class ProjectList(EntityCollection):
 
+    _collection: list[Project]
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [Project]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='projects', payload=payload)
     

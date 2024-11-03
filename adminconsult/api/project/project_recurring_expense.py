@@ -113,10 +113,11 @@ class ProjectRecurringExpense(Entity):
 
 class ProjectRecurringExpenseList(EntityCollection):
 
+    _collection: list[ProjectRecurringExpense]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [ProjectRecurringExpense]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='projectrecurringexpenses', on_max=on_max, payload=payload)
     

@@ -86,12 +86,12 @@ class EmployeeProfile(Entity):
 
 class EmployeeProfileList(EntityCollection):
 
+    _collection: list[EmployeeProfile]
+
     def __init__(self, client_credentials: ClientCredentials, refresh=False, on_max='ignore', payload=None):
 
         self._refresh = refresh
-
-        # Set collection element type for autocompletion purposes
-        self._collection = [EmployeeProfile]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='employeeprofiles', on_max=on_max, payload=payload)
     

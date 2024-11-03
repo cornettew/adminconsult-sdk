@@ -145,7 +145,11 @@ class ExpenseDeclaration(Entity):
 
 class ExpenseDeclarationList(EntityCollection):
 
+    _collection: list[ExpenseDeclaration]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='expensedeclarations', on_max=on_max, payload=payload)
     

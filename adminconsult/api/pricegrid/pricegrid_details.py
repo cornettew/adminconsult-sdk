@@ -70,9 +70,12 @@ class PriceGridDetail(Entity):
     
 class PriceGridDetailList(EntityCollection):
 
+    _collection: list[PriceGridDetail]
+
     def __init__(self, client_credentials: ClientCredentials, price_grid_id: int, on_max='ignore', payload=None):
 
         self.price_grid_id = price_grid_id
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint=f'pricegrid/{self.price_grid_id}', on_max=on_max, payload=payload)
     

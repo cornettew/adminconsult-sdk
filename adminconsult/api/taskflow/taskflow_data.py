@@ -329,10 +329,11 @@ class TaskFlowData(Entity):
 
 class TaskFlowDataList(EntityCollection):
 
+    _collection: list[TaskFlowData]
+
     def __init__(self, client_credentials: ClientCredentials, task_id, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [TaskFlowData]
+        self._collection = []
 
         self._task_id = task_id
 

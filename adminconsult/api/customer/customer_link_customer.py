@@ -332,10 +332,11 @@ class CustomerLinkCustomer(Entity):
 
 class CustomerLinkCustomerList(EntityCollection):
 
+    _collection: list[CustomerLinkCustomer]
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [CustomerLinkCustomer]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='customerlinkcustomer', payload=payload)
     

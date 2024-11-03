@@ -51,10 +51,11 @@ class ProjectAuthorizedRegistration(Entity):
 
 class ProjectAuthorizedRegistrationList(EntityCollection):
 
+    _collection: list[ProjectAuthorizedRegistration]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [ProjectAuthorizedRegistration]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='projectauthorizedregistrations', on_max=on_max, payload=payload)
     
