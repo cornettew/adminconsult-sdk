@@ -57,7 +57,11 @@ class ProductCategory(Entity):
 
 class ProductCategoryList(EntityCollection):
 
+    _collection: list[ProductCategory]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='productuses/productcategory', on_max=on_max, payload=payload)
     

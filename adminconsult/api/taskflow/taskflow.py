@@ -57,7 +57,11 @@ class TaskFlow(Entity):
 
 class TaskFlowList(EntityCollection):
 
+    _collection: list[TaskFlow]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='taskflow/tasks', on_max=on_max, payload=payload)
     

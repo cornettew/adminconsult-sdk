@@ -58,12 +58,12 @@ class Department(Entity):
 
 class DepartmentList(EntityCollection):
 
+    _collection: list[Department]
+
     def __init__(self, client_credentials: ClientCredentials, company_id: int, on_max='ignore', payload=None):
 
         self._company_id = company_id
-
-        # Set collection element type for autocompletion purposes
-        self._collection = [Department]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='companies/{}/departments'.format(self._company_id), on_max=on_max, payload=payload)
     

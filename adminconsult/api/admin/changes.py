@@ -107,10 +107,11 @@ class Change(Entity):
 
 class ChangeList(EntityCollection):
 
+    _collection: list[Change]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', on_technical_max='raise', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [Change]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='changedetails', on_max=on_max, technical_max_results=1000, on_technical_max=on_technical_max, payload=payload)
     

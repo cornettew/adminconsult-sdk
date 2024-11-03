@@ -82,10 +82,11 @@ class ProjectEmployee(Entity):
 
 class ProjectEmployeeList(EntityCollection):
 
+    _collection: list[ProjectEmployee]
+
     def __init__(self, client_credentials: ClientCredentials, payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [ProjectEmployee]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='projectemployees', payload=payload)
     

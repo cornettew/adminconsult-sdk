@@ -180,10 +180,11 @@ class Company(Entity):
 
 class CompanyList(EntityCollection):
 
+    _collection: list[Company]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [Company]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='companies', on_max=on_max, payload=payload)
     

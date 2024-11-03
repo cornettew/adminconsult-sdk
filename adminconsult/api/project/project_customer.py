@@ -113,12 +113,12 @@ class ProjectCustomer(Entity):
     
 class ProjectCustomerList(EntityCollection):
 
+    _collection: list[ProjectCustomer]
+
     def __init__(self, client_credentials: ClientCredentials, project_id: int, payload=None):
 
         self._project_id = project_id
-
-        # Set collection element type for autocompletion purposes
-        self._collection = [ProjectCustomer]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, 
                          endpoint='projects/{}/projectcustomers'.format(self._project_id), 

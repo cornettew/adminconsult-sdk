@@ -218,7 +218,11 @@ class Timeregistration(Entity):
 
 class TimeregistrationList(EntityCollection):
 
+    _collection: list[Timeregistration]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='timeregistrations', on_max=on_max, payload=payload)
     

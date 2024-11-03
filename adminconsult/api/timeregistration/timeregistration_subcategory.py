@@ -63,7 +63,11 @@ class TimeregistrationSubcategory(Entity):
 
 class TimeregistrationSubcategoryList(EntityCollection):
 
+    _collection: list[TimeregistrationSubcategory]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
+
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='timeregistrations/registrationsubcategory', on_max=on_max, payload=payload)
     

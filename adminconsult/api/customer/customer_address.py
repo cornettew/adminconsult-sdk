@@ -180,10 +180,11 @@ class CustomerAddress(Entity):
 
 class CustomerAddressList(EntityCollection):
 
+    _collection: list[CustomerAddress]
+
     def __init__(self, client_credentials: ClientCredentials, on_max='ignore', payload=None):
 
-        # Set collection element type for autocompletion purposes
-        self._collection = [CustomerAddress]
+        self._collection = []
 
         super().__init__(client_credentials=client_credentials, endpoint='customeraddresses', on_max=on_max, payload=payload)
     

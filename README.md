@@ -2,11 +2,11 @@
 
 [![Syneton Hermes Consult API Version](https://img.shields.io/badge/Syneton_Hermes_Consult_API-1.2.2-blue)](http://consultapi.syneton.be:2100/doc#/)
 
-This sdk implements interaction with a <a href="https://www.syneton.be/admin-en-admin-consult" target="_blank">Syneton Admin Consult</a> client via the API endpoints as well as via direct SQL access.
+This SDK facilitates interaction with a <a href="https://www.syneton.be/admin-en-admin-consult" target="_blank">Syneton Admin Consult</a> client through both API endpoints and direct SQL access.
 
 ## Support
 
-For support on this Python library or questions regarding interfacing options with Admin Consult, please contact [ward.cornette@num3rix.fr](mailto:ward.cornette@num3rix.fr).
+For support on this Python library or questions regarding interfacing options with Admin Consult, please feel free to contact the repository owner [ward.cornette@num3rix.fr](mailto:ward.cornette@num3rix.fr).
 
 ## Example usage REST API
 

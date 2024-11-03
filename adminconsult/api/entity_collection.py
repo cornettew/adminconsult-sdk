@@ -9,6 +9,8 @@ from datetime import datetime
 
 class EntityCollection(Base):
 
+    _collection: list
+
     def __init__(self, client_credentials: ClientCredentials, endpoint, on_max='ignore', technical_max_results=999999, on_technical_max='raise', payload: List[dict] = None):   #, entity: Entity
 
         super().__init__(client_credentials=client_credentials)
