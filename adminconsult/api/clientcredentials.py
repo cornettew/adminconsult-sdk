@@ -217,7 +217,7 @@ class ClientCredentials(ABC):
         self._read_tokens()
 
         # Check if the current access_token is still live
-        if (self.token_valid_until < datetime.now()):
+        if (self.token_valid_until - timedelta(seconds=30) < datetime.now()):
 
             self._start_auth()
 
