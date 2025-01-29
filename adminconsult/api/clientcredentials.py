@@ -329,8 +329,7 @@ class ClientCredentialsJsonFile(ClientCredentials):
 
 class ClientCredentialsHvac(ClientCredentials):
     '''
-    Admin Conult credentials object using a local JSON file.
-    The credentials are read from and written to this JSON file keeping the connection active.
+    Admin Consult credentials object using HashiCorp Vault.
 
     Parameters
     ----------
