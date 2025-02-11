@@ -1,0 +1,13 @@
+{
+    "city": "KORTRIJK",
+    "country_id": 22,
+    "exploitation_address": false,
+    "house_box": "b",
+    "house_nr": "4",
+    "invoice_address": false,
+    "postal_address": false,
+    "registered_office": false,
+    "street_1": "Dorpstraat",
+    "street_2": null,
+    "zip_code": "8500"
+}

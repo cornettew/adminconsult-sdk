@@ -1,0 +1,14 @@
+{
+    "date_of_birth": "2023-04-01T00:00:00",
+    "date_of_death": "2023-04-01T00:00:00",
+    "eid_expiration_date": "2023-04-01T00:00:00",
+    "handicap" : false,
+    "marital_status_id" : null,
+    "nationality" : null,
+    "national_nr" : null,
+    "place_of_birth" : "KORTRIJK",
+    "place_of_death" : "BOESCHEPE",
+    "profession_id" : null,
+    "self_employed_since" : null,
+    "sex" : "M"
+}

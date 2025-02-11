@@ -1,0 +1,16 @@
+{
+    "project_id": 1,
+    "person_id": 182,
+    "date_expense": "2023-04-01T00:00:00",
+    "expense_type": 59,
+    "nr_km": null,
+    "expense": 88.13,
+    "remarks": "admin api test expense",
+    "km_price": 0.3500,
+    "vat_perc": 0.2000,
+    "invoicable": true,
+    "period": null,
+    "ready_for_invoice": true,
+    "internal_remarks": null,
+    "repayable": false
+}

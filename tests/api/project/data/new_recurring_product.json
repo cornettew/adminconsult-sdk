@@ -1,0 +1,13 @@
+{
+    "invoice_text": "test",
+    "person_id": 1,
+    "planning_stop": "2024-01-01T00:00:00",
+    "product_id": 95,
+    "project_id": 1,
+    "quantity": 5,
+    "schedule_abbr_nr": 1,
+    "schedule_abbr_unit": "j",
+    "schedule_date": "2023-01-01T00:00:00",
+    "text_id": null,
+    "text_type": 1
+}

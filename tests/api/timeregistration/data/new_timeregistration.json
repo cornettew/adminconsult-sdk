@@ -1,0 +1,17 @@
+{
+    "project_id": 1,
+    "person_id": 182,
+    "prestation_id": 1205,
+    "date_registration": "2023-04-01T00:00:00",
+    "time_from": "14:00:00",
+    "duration": 5,
+    "overtime": false,
+    "invoicable": true,
+    "urgent": false,
+    "recalc": false,
+    "remarks": "admin api test time registration",
+    "internal_remarks": null,
+    "ex_forfait": false,
+    "benchmark": null,
+    "period": null
+}

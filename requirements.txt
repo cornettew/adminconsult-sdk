@@ -1,0 +1,8 @@
+requests>=2.24.0
+SQLAlchemy>=2.0.0
+sqlalchemy-sqlany
+pandas
+hvac>=2.0.0
+regex
+python-dotenv
+pytest

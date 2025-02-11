@@ -1,0 +1,12 @@
+{
+    "project_id": 1,
+    "person_id": 182,
+    "date_product_use": "2023-04-01T00:00:00",
+    "product_id": 161,
+    "remarks": "admin api test product use",
+    "product_number": 1.00,
+    "invoicable": true,
+    "period": null,
+    "ready_for_invoice": true,
+    "internal_remarks": null
+}
