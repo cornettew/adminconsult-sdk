@@ -115,8 +115,8 @@ class TaskFlowPlanned(Entity):
 
         created_object = self._create_entity()
 
-        # Assumption: new recorde is last one in the list
-        self.set_attributes(payload=created_object[-1])
+        # Remark: API return all Taskflow Plannings on Project instead of the created entity only. Identify the created entity based on highest ID.
+        self.set_attributes(payload=max(created_object, key=lambda x: x['TaskPlanningId']))
 
 
 class TaskFlowPlannedList(EntityCollection):
