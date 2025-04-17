@@ -79,7 +79,7 @@ class TaskFlowPlanned(Entity):
                          parent_id_property='project_id', 
                          endpoint_suffix='plannedtasks', 
                          child_id_property='task_planning_id',
-                         datetime_properties=['planning_start', 'planning_stop'])
+                         datetime_properties=['planning_start', 'planning_stop', 'one_time_date'])
 
 
     @property
