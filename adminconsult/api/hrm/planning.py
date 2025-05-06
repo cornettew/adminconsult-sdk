@@ -94,6 +94,20 @@ class Planning(Entity):
         object, _ = self._execute_request(method='get', endpoint='{}?Filter=PlanningId eq {}'.format(self._endpoint, id))
 
         return object[0]
+
+    def create_absence(self):
+        '''
+        Ticket gelogd om ook de eenheid (dag/uur) te kunnen specifiëren en niet alleen 'duration'.
+        Momenteel niet mogelijk om een afwezigheid correct in te laden.
+        https://syneton.zendesk.com/hc/nl/requests/177609
+        '''
+        
+        if getattr(self, self._primary_property) is not None:
+            raise Exception('{} already exists ({} = {})'.format(type(self).__name__, self._primary_property, getattr(self, self._primary_property)))
+
+        created_object, _ = self._execute_request(method='post', endpoint='absence', payload=self._create_post_payload())
+
+        self.set_attributes(payload=created_object)
     
     def update(self):
 
