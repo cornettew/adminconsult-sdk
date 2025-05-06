@@ -21,32 +21,32 @@ class Planning(Entity):
     _property_mapping = dict({
         'customer_id': {
             'GET': 'CustomerId',
-            'POST': None,
+            'POST': 'CustomerId',
             'PUT': None
         },
         'date_start': {
             'GET': 'DateStart',
-            'POST': None,
+            'POST': 'DateStart',
             'PUT': None
         },
         'duration': {
             'GET': 'Duration',
-            'POST': None,
+            'POST': 'Duration',
             'PUT': None
         },
         'is_public': {
             'GET': 'IsPublic',
-            'POST': None,
+            'POST': 'IsPublic',
             'PUT': None
         },
         'out_of_office': {
             'GET': 'OutOfOffice',
-            'POST': None,
+            'POST': 'OutOfOffice',
             'PUT': None
         },
         'person_id': {
             'GET': 'PersonId',
-            'POST': None,
+            'POST': 'PersonId',
             'PUT': None
         },
         'planning_id': {
@@ -56,27 +56,27 @@ class Planning(Entity):
         },
         'prestation_id': {
             'GET': 'PrestationId',
-            'POST': None,
+            'POST': 'PrestationId',
             'PUT': None
         },
         'project_id': {
             'GET': 'ProjectId',
-            'POST': None,
+            'POST': 'ProjectId',
             'PUT': None
         },
         'remarks': {
             'GET': 'Remarks',
-            'POST': None,
+            'POST': 'Remarks',
             'PUT': None
         },
         'reminder_minutes': {
             'GET': 'ReminderMinutes',
-            'POST': None,
+            'POST': 'ReminderMinutes',
             'PUT': None
         },
         'time_start': {
             'GET': 'TimeStart',
-            'POST': None,
+            'POST': 'TimeStart',
             'PUT': None
         }
     })
@@ -94,10 +94,6 @@ class Planning(Entity):
         object, _ = self._execute_request(method='get', endpoint='{}?Filter=PlanningId eq {}'.format(self._endpoint, id))
 
         return object[0]
-    
-    def create(self):
-
-        raise AttributeError('Cannot execute POST request on \'{}\' endpoint. '.format(self._endpoint))
     
     def update(self):
 
