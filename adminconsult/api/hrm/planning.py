@@ -88,7 +88,7 @@ class Planning(Entity):
                          primary_property='planning_id', 
                          payload=payload)
 
-    #IMPROV# Overriding _get_entity() because there is no /api/v1/employeeid/{id} endpoint
+    #IMPROV# Overriding _get_entity() because there is no /api/v1/planning/{id} endpoint
     def _get_entity(self, id: int):
 
         object, _ = self._execute_request(method='get', endpoint='{}?Filter=PlanningId eq {}'.format(self._endpoint, id))
