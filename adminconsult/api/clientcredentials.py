@@ -350,12 +350,12 @@ class ClientCredentialsHvac(ClientCredentials):
 
     '''
 
-    def __init__(self, url: str, token: str, mount_point: str = '', path: str = 'adminconsult_api', cert: str = None):
+    def __init__(self, url: str, token: str, mount_point: str = '', path: str = 'adminconsult_api'):
         
         self.client = hvac.Client(
             url=url,
             token=token,
-            cert=cert
+            verify=False
         )
 
         self.mount_point = mount_point
