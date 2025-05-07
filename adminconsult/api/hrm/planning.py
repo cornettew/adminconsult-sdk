@@ -97,9 +97,12 @@ class Planning(Entity):
 
     def create_absence(self):
         '''
-        Ticket gelogd om ook de eenheid (dag/uur) te kunnen specifiëren en niet alleen 'duration'.
-        Momenteel niet mogelijk om een afwezigheid correct in te laden.
-        https://syneton.zendesk.com/hc/nl/requests/177609
+        Carefully select a 'prestation_id' which is a time_off type of prestation.
+
+        Make sure the time_off prestation is either configured per Hour or per Week. 
+        The API cannot handle prestations where unity is optional hourly/daily.      
+
+        For presations which are daily, set the time_start to '08:00' or '12:00' to choose between AM or PM time off entries. 
         '''
         
         if getattr(self, self._primary_property) is not None:
