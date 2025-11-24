@@ -97,8 +97,8 @@ class EntityCollection(Base):
 
             ## Construct URL filter
             try:
-                if operator in ['eq', 'ne', 'ge', 'gt', 'le', 'lt', 'in']:
-                    filters += ['{} {} {}'.format(self._search_parameters[attribute], operator, value)]
+                if operator in ['eq', 'ne', 'ge', 'gt', 'le', 'lt', 'in', 'not_in']:
+                    filters += ['{} {} {}'.format(self._search_parameters[attribute], operator.replace('_', ' '), value)]
                 elif operator == 'null':
                     if isinstance(bool(value), bool):
                         if bool(value):
@@ -116,7 +116,7 @@ class EntityCollection(Base):
                 # elif operator == 'like':
                 #     filters += ['{} like {}'.format(self._search_parameters[attribute], value)]
                 else:
-                    raise Exception('Filter operater must be one of [\'eq\', \'ne\', \'ge\', \'gt\', \'le\', \'lt\', \'in\', \'null\', \'startswith\', \'endswith\', \'contains\']. Got \'{}\''.format(operator))
+                    raise Exception('Filter operater must be one of [\'eq\', \'ne\', \'ge\', \'gt\', \'le\', \'lt\', \'in\', \'not_in\', \'null\', \'startswith\', \'endswith\', \'contains\']. Got \'{}\''.format(operator))
             except KeyError:
                 raise AttributeError('{} has no attribute \'{}\'. Therefore the url filter \'{}\' cannot work.'.format(self.__class__.__name__, attribute, k))
 
@@ -129,7 +129,7 @@ class EntityCollection(Base):
     @abstractmethod
     def get(self, max_results, erase_former=True, on_max=None, on_technical_max=None, **value_filters):
         '''
-        value_filters: Use prefix [eq, ne, gt, lt, ge, and le] followed by '__property_name'
+        value_filters: Use prefix [eq, ne, gt, lt, ge, le, in, not_in] followed by '__property_name'
         erase_former, default = True: first erase all previous results.
         on_max: ['raise', 'warn', 'ignore'], defaults to cass setting
         on_technical_max: ['raise', 'warn', 'ignore'], defaults to cass setting
