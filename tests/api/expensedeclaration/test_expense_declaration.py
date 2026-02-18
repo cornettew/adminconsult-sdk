@@ -1,5 +1,7 @@
 import os
 import json
+from datetime import datetime, date, time
+from dateutil.parser import isoparse
 
 from tests.api import client_credentials
 
@@ -35,6 +37,9 @@ def test_create_expense_declaration(client_credentials: ClientCredentials):
     
     expense_declaration.create()
 
+    for k in expense_declaration._datetime_properties:
+        expense_declaration_details[k] = isoparse(expense_declaration_details[k])
+
     # Get new expense_declaration and veriry data
     expense_declaration_new = ExpenseDeclaration(client_credentials)
     expense_declaration_new.get(expense_declaration.expense_id)
@@ -67,7 +72,7 @@ def test_update_expense_declaration(client_credentials: ClientCredentials):
         # Store the to-be situation for comparison
         expense_declaration_details_post = admin_expense_declaration.to_json()
         expense_declaration_details_post[k] = new_value
-        del expense_declaration_details_post['customer_id']
+        del expense_declaration_details_post['customer_id']; del expense_declaration_details_post['date_expense']
 
         # Write to Admin Consult
         admin_expense_declaration.update(**{k: new_value})
@@ -87,6 +92,9 @@ def test_invoice_expense_declaration(client_credentials: ClientCredentials):
         setattr(expense_declaration, k, v)
     
     expense_declaration.create()
+
+    for k in expense_declaration._datetime_properties:
+        expense_declaration_details[k] = isoparse(expense_declaration_details[k])
 
     # Get new expense_declaration and veriry data
     expense_declaration_new = ExpenseDeclaration(client_credentials)
