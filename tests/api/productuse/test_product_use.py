@@ -1,5 +1,7 @@
 import os
 import json
+from datetime import datetime, date, time
+from dateutil.parser import isoparse
 
 from tests.api import client_credentials
 
@@ -35,6 +37,9 @@ def test_create_product_use(client_credentials: ClientCredentials):
     
     product_use.create()
 
+    for k in product_use._datetime_properties:
+        product_use_details[k] = isoparse(product_use_details[k])
+
     # Get new product_use and veriry data
     product_use_new = ProductUse(client_credentials)
     product_use_new.get(product_use.product_use_id)
@@ -67,7 +72,7 @@ def test_update_product_use(client_credentials: ClientCredentials):
         # Store the to-be situation for comparison
         product_use_details_post = admin_product_use.to_json()
         product_use_details_post[k] = new_value
-        del product_use_details_post['customer_id']; del product_use_details_post['product_price']
+        del product_use_details_post['customer_id']; del product_use_details_post['product_price']; del product_use_details_post['date_product_use']
 
         # Write to Admin Consult
         admin_product_use.update(**{k: new_value})
@@ -87,6 +92,9 @@ def test_invoice_product_use(client_credentials: ClientCredentials):
         setattr(product_use, k, v)
     
     product_use.create()
+
+    for k in product_use._datetime_properties:
+        product_use_details[k] = isoparse(product_use_details[k])
 
     # Get new product_use and veriry data
     product_use_new = ProductUse(client_credentials)
