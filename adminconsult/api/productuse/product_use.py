@@ -110,7 +110,8 @@ class ProductUse(Entity):
         super().__init__(client_credentials=client_credentials, 
                          endpoint='productuses', 
                          primary_property='product_use_id',
-                         payload=payload)
+                         payload=payload,
+                         datetime_properties=['date_product_use'])
 
     def create(self):
         

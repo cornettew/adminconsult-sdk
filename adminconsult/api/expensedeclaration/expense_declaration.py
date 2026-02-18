@@ -122,7 +122,8 @@ class ExpenseDeclaration(Entity):
         super().__init__(client_credentials=client_credentials, 
                          endpoint='expensedeclarations', 
                          primary_property='expense_id', 
-                         payload=payload)
+                         payload=payload,
+                         datetime_properties=['date_expense'])
 
     def create(self):
         
