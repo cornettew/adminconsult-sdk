@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="adminconsult_sdk",
-    version="1.0.8",
+    version="1.0.10",
     author="Ward Cornette",
     author_email="Ward.Cornette@num3rix.fr",
     description="Syneton Admin Consult SDK - REST API Wrapper",
