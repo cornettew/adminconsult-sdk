@@ -97,7 +97,7 @@ class ProjectRecurringProduct(Entity):
                          parent_id_property='project_id',
                          endpoint_suffix='projectrecurringproducts',
                          child_id_property='project_recurring_product_id',
-                         datetime_properties=['schedule_date', 'planning_start', 'planning_stop'])
+                         datetime_properties=['schedule_date', 'last_creation_date', 'planning_stop'])
 
 
     #IMPROV# Overriding _get_entity() because there is no /api/v1/projects/{project_id}/projectrecurringproducts/{id} endpoint
