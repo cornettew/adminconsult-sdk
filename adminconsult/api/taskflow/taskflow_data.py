@@ -178,6 +178,7 @@ class TaskFlowData(Entity):
     
     _task_id: int = None
 
+    taskplanning_id: int = None
     taskdata_id: int = None
     deadline: datetime = None
     project_id: int = None
@@ -188,6 +189,11 @@ class TaskFlowData(Entity):
     _subtasks: list[SubtaskData] = []
 
     _property_mapping = dict({
+        'taskplanning_id': {
+            'GET': 'TaskPlanningId',
+            'POST': None,
+            'PUT': None
+        },
         'taskdata_id': {
             'GET': 'Id',
             'POST': None,
